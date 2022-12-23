@@ -1,35 +1,9 @@
-﻿using Volo.Abp.DependencyInjection;
+﻿namespace CSP.MainApp;
 
-namespace CSP.MainApp;
-
-public partial class MainPage : ContentPage, ISingletonDependency
+public partial class MainPage : ContentPage
 {
-	private readonly HelloWorldService _helloWorldService;
-	
-	int count = 0;
-
-	public MainPage(HelloWorldService helloWorldService)
+	public MainPage()
 	{
-		_helloWorldService = helloWorldService;
 		InitializeComponent();
-		SetHelloLabText();
-
-    }
-
-    private void SetHelloLabText()
-    {
-		HelloLab.Text = _helloWorldService.SayHello();
-    }
-    
-    private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 }
