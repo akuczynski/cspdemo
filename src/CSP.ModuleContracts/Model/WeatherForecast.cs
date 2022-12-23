@@ -1,4 +1,4 @@
-namespace CSP.MainApp.Data;
+namespace CSP.ModuleContracts;
 
 public class WeatherForecast
 {

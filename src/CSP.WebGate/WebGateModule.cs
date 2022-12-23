@@ -1,5 +1,7 @@
 ﻿using Volo.Abp.Modularity;
 using Volo.Abp;
+using CSP.ModuleContracts;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSP.WebGate
 {
@@ -7,10 +9,10 @@ namespace CSP.WebGate
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
-            //var myService = context.ServiceProvider
-            //    .GetRequiredService<TeamService>();
+            var hostService = context.ServiceProvider
+                .GetRequiredService<IHostService>();
 
-            //myService.Initialize();
-        }
+            hostService.Run();
+		}
     }
 }

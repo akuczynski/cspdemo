@@ -1,11 +1,18 @@
 ﻿using CSP.ModuleContracts;
+using GenHTTP.Engine;
+using GenHTTP.Modules.Security;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
+using GenHTTP.Engine;
+
+using GenHTTP.Modules.Layouting;
+using GenHTTP.Modules.Practices;
+using GenHTTP.Modules.Security;
+using GenHTTP.Modules.Webservices;
 
 namespace CSP.WebGate
 {
@@ -20,9 +27,23 @@ namespace CSP.WebGate
 
         public void Run()
         {
-            _logger.LogDebug("Host service is running.");
+			var api = Layout.Create()
+			 	.AddService<BookService>("books")
+				.Add(CorsPolicy.Permissive());
 
-//            throw new NotImplementedException();
+            var hostProcess = Task.Factory.StartNew(() =>
+            {
+                Host.Create()
+                           .Handler(api)
+                           .Defaults()
+                           .Console()
+#if DEBUG
+                           .Development()
+#endif
+                           .Run();
+            });
+
+			_logger.LogDebug("Host service is running.");
         }
     }
 }

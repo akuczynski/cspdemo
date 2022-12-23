@@ -4,15 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />
-    <PackageReference Include="GenHTTP.Core" Version="6.4.0" />
-
-	<PackageReference Include="GenHTTP.Modules.Security" Version="6.4.0" />
-	<PackageReference Include="GenHTTP.Modules.Webservices" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>

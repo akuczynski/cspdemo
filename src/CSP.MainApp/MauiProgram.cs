@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using CSP.MainApp.Data;
 using Volo.Abp.Autofac;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
+using CSP.ModuleContracts;
 
 namespace CSP.MainApp;
 
@@ -36,13 +36,11 @@ public static class MauiProgram
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
 
-        builder.Services.AddSingleton<WeatherForecastService>();
-
         var app = builder.Build();
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 
-        return app;
+		return app;
 	}
 
     private static void ConfigureConfiguration(MauiAppBuilder builder)
