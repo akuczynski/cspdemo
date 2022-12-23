@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.MainApp", "src\CSP.Main
 		{C2596903-76A3-4328-8BF4-410C93639EBD} = {C2596903-76A3-4328-8BF4-410C93639EBD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSP.WeatherForecast", "src\CSP.WeatherForecast\CSP.WeatherForecast.csproj", "{561607C1-26EB-44E8-B3A5-CABD0282F1F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Services", "src\CSP.WeatherForecast\CSP.Services.csproj", "{561607C1-26EB-44E8-B3A5-CABD0282F1F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

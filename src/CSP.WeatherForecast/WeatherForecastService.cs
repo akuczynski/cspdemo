@@ -2,7 +2,7 @@ using CSP.ModuleContracts;
 using Microsoft.Extensions.Logging;
 using Volo.Abp.DependencyInjection;
 
-namespace CSP.WeatherForecast;
+namespace CSP.Services;
 
 internal class WeatherForecastService : IWeatherForecastService, ITransientDependency
 {
