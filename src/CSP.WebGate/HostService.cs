@@ -27,13 +27,13 @@ namespace CSP.WebGate
 			_routeService = routeService;
 		}
 
-        public void Run()
+        public Task RunAsync()
         {
-            var handler = ((RouteService)_routeService).GetHanlder();
+          var handler = ((RouteService)_routeService).GetHanlder();
 
 			var hostProcess = Task.Factory.StartNew(() =>
             {
-                Host.Create()
+			    Host.Create()
                            .Handler(handler)
                            .Defaults()
                            .Console()
@@ -43,7 +43,10 @@ namespace CSP.WebGate
                            .Run();
             });
 
+
 			_logger.LogDebug("Host service is running.");
+
+			return hostProcess;
         }
     }
 }

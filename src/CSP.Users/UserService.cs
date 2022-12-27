@@ -13,8 +13,6 @@ namespace CSP.Users
 
     public class UserService : IUserService, ITransientDependency
 	{
-		public string Name => "books";
-
 		[ResourceMethod]
         public List<User> GetUsers(int page, int pageSize)
         {

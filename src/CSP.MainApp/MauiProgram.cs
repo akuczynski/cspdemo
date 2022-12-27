@@ -29,7 +29,7 @@ public static class MauiProgram
         {
             options.Services.ReplaceConfiguration(builder.Configuration);
             options.PlugInSources.AddFolder(Path.Combine(appDir, "..\\Modules"));
-        });
+		});
 
         builder.Services.AddMauiBlazorWebView();
 #if DEBUG

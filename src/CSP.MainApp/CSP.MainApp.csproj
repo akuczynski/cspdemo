@@ -67,7 +67,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
-	  <ProjectReference Include="..\CSP.Users.Contract\CSP.Users.Contract.csproj" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
