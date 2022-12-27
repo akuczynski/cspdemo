@@ -1,4 +1,6 @@
-﻿using CSP.WebGate;
+﻿using CSP.ModuleContracts;
+using CSP.WebGate;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
@@ -9,17 +11,13 @@ namespace CSP.Services
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
+            RegisterRoutePaths(context);
 		}
 
-
-        public Dictionary<object, string> GetServices()
-        {
-            var result = new Dictionary<object, string>();
-
-            //            result.Add()
-
-            return result;
-        }
-
+		private void RegisterRoutePaths(ApplicationInitializationContext context)
+		{
+            var routeService = context.ServiceProvider.GetService<IRouteService>();
+            routeService?.AddSerice<BookService>("books");
+		} 
     }
 }

@@ -19,24 +19,22 @@ namespace CSP.WebGate
     internal class HostService : IHostService, ITransientDependency
     {
         private readonly ILogger<HostService> _logger;
-		private readonly IBookService _httpService;
+		private readonly IRouteService _routeService;
 
-		public HostService(ILogger<HostService> logger, IBookService httpService)
+		public HostService(ILogger<HostService> logger, IRouteService routeService)
         {
             _logger = logger;
-			_httpService = httpService;
+			_routeService = routeService;
 		}
 
         public void Run()
         {
-            var api = Layout.Create();
-            api.AddService(_httpService.Name, _httpService);
-			api.Add(CorsPolicy.Permissive());
+            var handler = ((RouteService)_routeService).GetHanlder();
 
 			var hostProcess = Task.Factory.StartNew(() =>
             {
                 Host.Create()
-                           .Handler(api)
+                           .Handler(handler)
                            .Defaults()
                            .Console()
 #if DEBUG

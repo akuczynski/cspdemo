@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />
+	  <PackageReference Include="GenHTTP.Core" Version="6.4.0" />
+	  <PackageReference Include="GenHTTP.Modules.Webservices" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+    <ProjectReference Include="..\CSP.Users.Contract\CSP.Users.Contract.csproj" />
+  </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)..\..\Assemblies\&quot; /Y" />
+	</Target>
+</Project>

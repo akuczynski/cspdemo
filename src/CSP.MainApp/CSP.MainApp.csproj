@@ -32,6 +32,7 @@
     </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="NodaTime.Serialization.JsonNet" Version="3.0.1" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="6.0.2" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.8" />
 	</ItemGroup>
@@ -56,6 +57,8 @@
 
 	<ItemGroup>
 	  <Content Remove="appsettings.json" />
+	  <Content Remove="Pages\Counter.razor" />
+	  <Content Remove="Pages\FetchData.razor" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +67,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+	  <ProjectReference Include="..\CSP.Users.Contract\CSP.Users.Contract.csproj" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

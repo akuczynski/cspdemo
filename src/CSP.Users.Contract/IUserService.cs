@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.ModuleContracts
+namespace CSP.Users.Contract
 {
-    public interface IHostService
-    {
-        void Run(); 
-    }
+	public interface IUserService
+	{
+		List<User> GetUsers(int page, int pageSize);
+	}
 }

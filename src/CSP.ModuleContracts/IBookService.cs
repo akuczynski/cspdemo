@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSP.ModuleContracts
 {
-	public interface IBookService : IHttpService
+	public interface IBookService 
 	{
 		List<Book> GetBooks(int page, int pageSize);
 	}

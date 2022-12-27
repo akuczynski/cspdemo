@@ -1,0 +1,55 @@
+﻿@page "/users"
+
+@using CSP.ModuleContracts
+@using System.Net.Http.Headers;
+@using CSP.Users.Contract;
+@using Newtonsoft.Json; 
+
+<h1>Users example</h1>
+
+<p>This component demonstrates fetching data from a user service (with HTTP call).</p>
+
+@if (users == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First name</th> 
+				<th>Last name</th> 
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var user in users)
+			{
+				<tr>
+					 <td>@user.ID</td>
+					 <td>@user.FirstName</td>
+					 <td>@user.LastName</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+	private User[] users;
+
+	protected override async Task OnInitializedAsync()
+	{
+		using var client = new HttpClient();
+
+		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+		var url = "http://localhost:8080/users/";
+		HttpResponseMessage response = await client.GetAsync(url);
+		response.EnsureSuccessStatusCode();
+		var resp = await response.Content.ReadAsStringAsync();
+
+		var result = JsonConvert.DeserializeObject<List<User>>(resp);
+		users = await Task.FromResult(result.ToArray());
+	}
+}

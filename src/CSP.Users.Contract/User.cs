@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.Services
+namespace CSP.Users.Contract
 {
-	public interface IHttpService
-	{
-		public string Name { get; }
-	}
+	public record User(int ID, string FirstName, string LastName);
 }
