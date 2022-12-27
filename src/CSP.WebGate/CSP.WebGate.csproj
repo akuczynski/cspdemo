@@ -5,6 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Platforms>AnyCPU;ARM64;ARM32;x64</Platforms>
+    <Configurations>Debug;Release;Android</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

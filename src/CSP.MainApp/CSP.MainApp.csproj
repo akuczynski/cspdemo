@@ -29,6 +29,8 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+        <Platforms>AnyCPU;ARM64;x64</Platforms>
+        <Configurations>Debug;Release;Android</Configurations>
     </PropertyGroup>
 
 	<ItemGroup>
@@ -70,7 +72,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="xcopy &quot;$(ProjectDir)..\..\Assemblies\*.*&quot; &quot;$(TargetDir)Modules\&quot; /Y /s" />
+	  <Exec Command="xcopy &quot;$(ProjectDir)..\..\Assemblies\*.*&quot; &quot;$(TargetDir)Modules\&quot; /Y /s&#xD;&#xA;" />
 	</Target>
 
 </Project>

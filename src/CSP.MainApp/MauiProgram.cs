@@ -6,6 +6,7 @@ using System.Reflection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
 using CSP.ModuleContracts;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace CSP.MainApp;
 
@@ -24,14 +25,22 @@ public static class MauiProgram
 
         ConfigureConfiguration(builder);
 
-        var appDir = AppDomain.CurrentDomain.BaseDirectory;
-        builder.Services.AddApplication<MainAppModule>(options =>
-        {
-            options.Services.ReplaceConfiguration(builder.Configuration);
-            options.PlugInSources.AddFolder(Path.Combine(appDir, "..\\Modules"));
+ #if ANDROID
+		var appDir = FileSystem.Current.AppDataDirectory;
+		var pluginsFolder = Path.Combine(appDir, string.Format("modules", Path.DirectorySeparatorChar));
+
+#else
+       var appDir = AppDomain.CurrentDomain.BaseDirectory;
+	   var pluginsFolder = Path.Combine(appDir, string.Format("..{0}Modules", Path.DirectorySeparatorChar));
+#endif
+		builder.Services.AddApplication<MainAppModule>(options =>
+		{
+			options.Services.ReplaceConfiguration(builder.Configuration);
+            options.PlugInSources.AddFolder(pluginsFolder);
 		});
 
-        builder.Services.AddMauiBlazorWebView();
+
+		builder.Services.AddMauiBlazorWebView();
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif

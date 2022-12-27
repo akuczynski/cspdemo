@@ -6,6 +6,8 @@
 		<NoWarn>$(NoWarn);CS1591;CS0436</NoWarn>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
+		<Platforms>AnyCPU;ARM64;x64</Platforms>
+		<Configurations>Debug;Release;Android</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>
