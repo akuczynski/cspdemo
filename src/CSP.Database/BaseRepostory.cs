@@ -7,7 +7,7 @@ using Volo.Abp.DependencyInjection;
 
 namespace TodoSQLite.Data;
 
-public class BaseRepostory<T> : IGenericRepository<T> where T : Entity, new()
+public class BaseRepostory<T> : IGenericRepository<T> where T : IEntity, new()
 {
     protected SQLiteAsyncConnection Database { get; set; }
      

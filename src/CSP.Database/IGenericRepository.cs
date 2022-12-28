@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSP.ModuleContracts.Database
 {
-	public interface IGenericRepository<T> where T : Entity
+	public interface IGenericRepository<T> where T : IEntity
 	{
 		Task<T> GetByIdAsync(long id);
 		Task<IReadOnlyList<T>> GetAllAsync();

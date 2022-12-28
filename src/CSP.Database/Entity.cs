@@ -8,25 +8,29 @@ namespace CSP.ModuleContracts.Database
 {
  
 	/// <inheritdoc cref="IEntity{TKey}" />
-	[Serializable]
-	public abstract class Entity 
+	//[Serializable]
+	//public abstract class Entity 
+	//{
+	//	/// <inheritdoc/>
+	//	public abstract long Id { get; protected set; }
+
+	//	protected Entity()
+	//	{
+
+	//	}
+
+	//	protected Entity(long id)
+	//	{
+	//		Id = id;
+	//	} 
+	//	/// <inheritdoc/>
+	//	public override string ToString()
+	//	{
+	//		return $"[ENTITY: {GetType().Name}] Id = {Id}";
+	//	}
+	//}
+	public interface IEntity
 	{
-		/// <inheritdoc/>
-		public virtual long Id { get; protected set; }
-
-		protected Entity()
-		{
-
-		}
-
-		protected Entity(long id)
-		{
-			Id = id;
-		} 
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[ENTITY: {GetType().Name}] Id = {Id}";
-		}
+		public long Id { get; }
 	}
 }
