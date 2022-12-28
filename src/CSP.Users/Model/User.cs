@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CSP.ModuleContracts.Database;
+using SQLite; 
 
-namespace CSP.Users.Contract
+namespace CSP.Users.Model
 {
-	public class User
+	public class User : Entity
 	{
-
-	//	[PrimaryKey, AutoIncrement]
-		public int ID { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public override long Id { get; protected set; }
 
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }
 
+		public User() { }
+
 		public User(int id, string firstName, string lastName)
 		{
-			ID = id;
+			Id = id;
 			FirstName = firstName;
 			LastName = lastName;
 		}

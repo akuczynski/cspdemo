@@ -14,20 +14,13 @@ namespace CSP.WebGate
 {
 	internal class RouteService : IRouteService, ISingletonDependency
 	{
-		//private Dictionary<string, object> _routeMap;
 		private LayoutBuilder _layout;
 
 		public RouteService()
 		{
-		//	_routeMap = new Dictionary<string, object>();
 			_layout = Layout.Create();
 			_layout.Add(CorsPolicy.Permissive());
 		}
-
-		//public void AddRoute(string path, object instance)
-		//{
-		//	_routeMap.Add(path, instance);
-		//}
 
 		public void AddSerice<T>(string path) where T : new()
 		{
@@ -38,16 +31,6 @@ namespace CSP.WebGate
 		{
 			return _layout;
 		}
-
-		//	public void RemoveRoute(string path) { }
-
-		//public List<(string Path, object Service)> GetRouteMap()
-		//{ 
-		//	return  _routeMap.Select(x => new { x.Key, x.Value })
-		//		.AsEnumerable()
-		//		.Select(c => (c.Key, c.Value))
-		//		.ToList();
-		//}
 	}
 
 }

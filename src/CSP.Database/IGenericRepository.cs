@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace CSP.ModuleContracts.Database
 {
-	public interface IGenericRepository<T> where T : class
+	public interface IGenericRepository<T> where T : Entity
 	{
-		Task<T> GetByIdAsync(int id);
+		Task<T> GetByIdAsync(long id);
 		Task<IReadOnlyList<T>> GetAllAsync();
-		Task<int> AddAsync(T entity);
-		Task<int> UpdateAsync(T entity);
-		Task<int> DeleteAsync(int id);
+		Task<long> SaveItemAsync(T item);
+		Task<long> DeleteAsync(T item);
 	}
 }

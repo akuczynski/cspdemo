@@ -1,73 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using CSP.ModuleContracts.Database;
-using CSP.Users.Contract;
-//using CSP.Users.Contract;
+using CSP.Users.Model;
 using GenHTTP.Api.Protocol;
 using GenHTTP.Modules.Webservices;
 using TodoSQLite.Data;
-
-//using GenHTTP.Modules.Webservices;
 using Volo.Abp.DependencyInjection;
 
 namespace CSP.Users.Services
 {
-  //  public record User (int ID, string FirstName, string LastName); 
-
     // For documentation, see: https://genhttp.org/documentation/content/webservices
-
-    public class UserService : IUserService, ITransientDependency
+    public class UserService : ITransientDependency
     {
-		private UserDatabase _database;
+		private BaseRepostory<User> _database;
 
         public UserService()
         {
-            _database = new UserDatabase();
+            _database = new BaseRepostory<User>();
 		}
 
-        [ResourceMethod]
-        public List<User> GetUsers(int page, int pageSize)
+		// GET http://localhost:8080/users/?page=1&pageSize=20
+		[ResourceMethod]
+		public IReadOnlyList<User> GetUsers(int page, int pageSize)
         {
-			List<User> result =   _database.GetItemsAsync().Result;
-
-            // GET http://localhost:8080/users/?page=1&pageSize=20
-            return new()
-            {
-                new User(1, "Johnny", "Deep"),
-                new User(1, "Sylwester", "Stallone")
-
-            };
+			var result = _database.GetAllAsync().Result;
+            return result; 
         }
 
-        //[ResourceMethod(":id")]
-        //public Book? GetBook(int id)
-        //{
-        //    // GET http://localhost:8080/books/:id/
-        //    throw new NotImplementedException();
-        //}
+		// GET http://localhost:8080/users/:id/
+		[ResourceMethod(":id")]
+        public User? GetUser(long id)
+        {
+			var result = _database.GetByIdAsync(id).Result;
+			return result;
+		}
 
         [ResourceMethod(RequestMethod.PUT)]
-        public async Task<int> AddUser()
+        public async Task<long> AddUser(string firstName, string lastName)
         {
-            var database = new UserDatabase();
-            var user = new User() { FirstName = "Tomek", LastName = "Soyer" };
-            return await database.SaveItemAsync(user);
+            var user = new User { FirstName = firstName, LastName = lastName };
+            return await _database.SaveItemAsync(user);
         }
 
-        //[ResourceMethod(RequestMethod.POST)]
-        //public Book? UpdateBook(Book book)
-        //{
-        //    // POST http://localhost:8080/books/
-        //    throw new NotImplementedException();
-        //}
+		// POST http://localhost:8080/users/
+		[ResourceMethod(RequestMethod.POST)]
+        public async Task<long> UpdateUser(User user)
+        {
+			return await _database.SaveItemAsync(user);
+		}
 
-        //[ResourceMethod(RequestMethod.DELETE, ":id")]
-        //public Book? DeleteBook(int id)
-        //{
-        //    // DELETE http://localhost:8080/books/:id/
-        //    throw new NotImplementedException();
-        //}
-
+        [ResourceMethod(RequestMethod.DELETE, ":id")]
+        public async Task DeleteUser(long id)
+        {
+            var user = await _database.GetByIdAsync(id);
+            if (user != null)
+            {
+                await _database.DeleteAsync(user);
+            }
+        }
     }
 
 }

@@ -6,11 +6,8 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;ARM64;x64</Platforms>
     <Configurations>Debug;Release;Android</Configurations>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="WeatherForecastService.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />

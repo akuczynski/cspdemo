@@ -6,14 +6,14 @@ using GenHTTP.Api.Protocol;
 using GenHTTP.Modules.Webservices;
 using Volo.Abp.DependencyInjection;
 
-namespace CSP.WebGate
+namespace CSP.Books.Services
 {
 
     // For documentation, see: https://genhttp.org/documentation/content/webservices
 
     public class BookService : IBookService, ITransientDependency
-	{
-		[ResourceMethod]
+    {
+        [ResourceMethod]
         public List<Book> GetBooks(int page, int pageSize)
         {
             // GET http://localhost:8080/books/?page=1&pageSize=20

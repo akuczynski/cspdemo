@@ -3,11 +3,9 @@ using Volo.Abp;
 using CSP.ModuleContracts;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-//using CSP.Services;
 
 namespace CSP.WebGate
 {
-//	[DependsOn(typeof(ServiceModule))]
 	public class WebGateModule : AbpModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
