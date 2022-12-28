@@ -1,14 +1,18 @@
-﻿using CSP.ModuleContracts;
+﻿//using CSP.Database;
+using CSP.Database;
+using CSP.ModuleContracts;
+using CSP.Users.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
+//using Volo.Abp.Dapper;
 using Volo.Abp.Modularity;
 
 namespace CSP.Users
 {
-	 
+	[DependsOn(typeof(DatabaseModule))]
 	public class UsersModule : AbpModule
 	{
-		public override void OnApplicationInitialization(ApplicationInitializationContext context)
+		public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
 		{
 			RegisterRoutePaths(context);
 		}

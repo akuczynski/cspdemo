@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.Users.Contract
+namespace CSP.Database
 {
-	public interface IUserService
+	static internal class DbSettings
 	{
-		List<User> GetUsers(int page, int pageSize);
+		public static string DatabasePath { get; set; }
 	}
 }

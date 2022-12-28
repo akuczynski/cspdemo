@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CSP.WebGate;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,7 +11,8 @@ using Volo.Abp.Modularity;
 namespace Acme.MyConsoleApp;
 
 [DependsOn(
-    typeof(AbpAutofacModule)
+    typeof(AbpAutofacModule),
+    typeof(WebGateModule)
 )]
 public class MyConsoleAppModule : AbpModule
 {

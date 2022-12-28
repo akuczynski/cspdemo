@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.ModuleContracts
+namespace CSP.Users.Repositories
 {
-	public interface IHttpService
+	public interface IUserRepository
 	{
-		string Name { get; }
 	}
 }

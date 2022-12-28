@@ -13,8 +13,6 @@ namespace CSP.WebGate
 
     public class BookService : IBookService, ITransientDependency
 	{
-		public string Name => "books";
-
 		[ResourceMethod]
         public List<Book> GetBooks(int page, int pageSize)
         {

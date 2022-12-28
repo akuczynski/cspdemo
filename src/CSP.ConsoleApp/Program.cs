@@ -32,15 +32,16 @@ public class Program
 
             var builder = Host.CreateDefaultBuilder(args);
 			var appDir = AppDomain.CurrentDomain.BaseDirectory;
-			
-            builder.ConfigureServices(services =>
+            var pluginsFolder = Path.Combine(appDir, "Modules");
+
+			builder.ConfigureServices(services =>
             {
                 services.AddHostedService<MyConsoleAppHostedService>();
                 services.AddApplicationAsync<MyConsoleAppModule>(options =>
                 {
                     options.Services.ReplaceConfiguration(services.GetConfiguration());
                     options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
-					options.PlugInSources.AddFolder(Path.Combine(appDir, "Modules"));
+					options.PlugInSources.AddFolder(pluginsFolder);
 				});
             }).UseAutofac().UseConsoleLifetime();
 

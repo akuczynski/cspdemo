@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	 <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> 
+	 <Platforms>AnyCPU;ARM64;ARM32;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+		<PackageReference Include="Volo.Abp.Dapper" Version="6.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)..\..\Assemblies\&quot; /Y" />
+	</Target>
+</Project>

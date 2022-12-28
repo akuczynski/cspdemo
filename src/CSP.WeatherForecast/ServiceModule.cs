@@ -9,7 +9,7 @@ namespace CSP.Services
 
     public class ServiceModule : AbpModule
     {
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+		public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
         {
             RegisterRoutePaths(context);
 		}
