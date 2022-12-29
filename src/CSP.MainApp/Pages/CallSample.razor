@@ -1,0 +1,53 @@
+﻿@page "/call-dotnent"
+
+@using Newtonsoft.Json;
+@inject IJSRuntime JS
+
+<h1>Call .NET from Js example</h1>
+
+<p> Demo #1
+	<button onclick="returnArrayAsync()">
+		Trigger .NET static method
+	</button>
+</p>
+
+
+<p> Demo #2
+    <label>
+        Name: <input @bind="name" />
+    </label>
+</p>
+<p>
+    <button @onclick="TriggerDotNetInstanceMethod">
+        Trigger .NET instance method
+    </button>
+</p>
+<p>
+    @result
+</p>
+
+
+@code {
+    private string? name;
+    private string? result;
+    private JsInteropClasses3? jsInteropClasses;
+
+    protected override void OnInitialized()
+    {
+        jsInteropClasses = new JsInteropClasses3(JS);
+    }
+
+    private async Task TriggerDotNetInstanceMethod()
+    {
+        if (jsInteropClasses is not null)
+        {
+            result = await jsInteropClasses.CallHelloHelperGetHelloMessage(name);
+        }
+    }
+
+	[JSInvokable]
+	public static Task<int[]> ReturnArrayAsync()
+	{
+		return Task.FromResult(new int[] { 1, 2, 3 });
+	}
+}

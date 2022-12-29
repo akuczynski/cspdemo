@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 	<title>CSP.MainApp</title>
 	<base href="/" />
 	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
 	<link href="css/app.css" rel="stylesheet" />
 	<link href="CSP.MainApp.styles.css" rel="stylesheet" />
+
+	<script>
+		window.returnArrayAsync = () => {
+			DotNet.invokeMethodAsync('CSP.MainApp', 'ReturnArrayAsync')
+				.then(data => {
+					console.log(data);
+				});
+		};
+	</script>
+
+	<script>
+		window.sayHello1 = (dotNetHelper) => {
+			return dotNetHelper.invokeMethodAsync('GetHelloMessage');
+		};
+	</script>
 </head>
 
 <body>
