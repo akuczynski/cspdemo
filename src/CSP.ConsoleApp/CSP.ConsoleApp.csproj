@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	  <ProjectReference Include="..\CSP.WebGate\CSP.WebGate.csproj" />
 	</ItemGroup>
 

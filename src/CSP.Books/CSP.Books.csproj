@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSP.Database\CSP.Database.csproj" />
-    <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+    <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
     <ProjectReference Include="..\CSP.Services\CSP.Services.csproj" />
   </ItemGroup>
 

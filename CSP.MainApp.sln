@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{88D70326-FD7B-4F90-8CDE-D99B7819AF7E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastracture", "infrastracture", "{88D70326-FD7B-4F90-8CDE-D99B7819AF7E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.WebGate", "src\CSP.WebGate\CSP.WebGate.csproj", "{C2596903-76A3-4328-8BF4-410C93639EBD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.ModuleContracts", "src\CSP.ModuleContracts\CSP.ModuleContracts.csproj", "{F8C16D83-DB1C-4C93-A4B4-3401E5595C6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Core", "src\CSP.ModuleContracts\CSP.Core.csproj", "{F8C16D83-DB1C-4C93-A4B4-3401E5595C6C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.MainApp", "src\CSP.MainApp\CSP.MainApp.csproj", "{1491AE9A-3DEE-44E5-8AC0-779C6C1896D9}"
 	ProjectSection(ProjectDependencies) = postProject

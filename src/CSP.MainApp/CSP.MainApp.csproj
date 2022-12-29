@@ -91,7 +91,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
-	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.ModuleContracts.csproj" />
+	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
