@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSP.Core.Command;
 using CSP.ModuleContracts.Database;
+using CSP.Users.Command;
 using CSP.Users.Model;
 using GenHTTP.Api.Protocol;
 using GenHTTP.Modules.Webservices;

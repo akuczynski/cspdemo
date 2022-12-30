@@ -1,6 +1,9 @@
 ﻿//using CSP.Database;
+using CSP.Core.Command;
 using CSP.Database;
 using CSP.ModuleContracts;
+using CSP.Users.Command;
+using CSP.Users.Handlers;
 using CSP.Users.Model;
 using CSP.Users.Services;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +46,12 @@ namespace CSP.Users
 		{
 			var routeService = context.ServiceProvider.GetService<IRouteService>();
 			routeService?.AddSerice<UserService>("users");
+		}
+
+		public override void ConfigureServices(ServiceConfigurationContext context)
+		{
+			context.Services.AddTransient<ICommandHandler<AddUserCommand>, AddUserHandler>();
+		//	context.Services.AddTransient<ICommandHandler, AddUserHandler>();
 		}
 	}
 }
