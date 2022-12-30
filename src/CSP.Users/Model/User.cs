@@ -6,7 +6,7 @@ namespace CSP.Users.Model
 	public class User : IEntity
 	{
 		[PrimaryKey, AutoIncrement]
-		public long Id { get; protected set; }
+		public long Id { get; set; }
 
 		public string FirstName { get; set; }
 

@@ -36,10 +36,10 @@ namespace CSP.Users.Services
 		}
 
         [ResourceMethod(RequestMethod.PUT)]
-        public async Task<long> AddUser(string firstName, string lastName)
+        public long AddUser(string firstName, string lastName)
         {
             var user = new User { FirstName = firstName, LastName = lastName };
-            return await _database.SaveItemAsync(user);
+            return _database.SaveItemAsync(user).Result;
         }
 
 		// POST http://localhost:8080/users/
@@ -50,7 +50,7 @@ namespace CSP.Users.Services
 		}
 
         [ResourceMethod(RequestMethod.DELETE, ":id")]
-        public async Task DeleteUser(long id)
+        public async void DeleteUser(long id)
         {
             var user = await _database.GetByIdAsync(id);
             if (user != null)

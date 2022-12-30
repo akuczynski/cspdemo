@@ -1,4 +1,5 @@
 ﻿using CSP.ModuleContracts;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -12,17 +13,14 @@ namespace CSP.MainApp
 {
     public class ApplicationSettings : IApplicationSettings, ISingletonDependency
 	{
-        public string DatabaseFilename = "CSPSQLite.db3";
+        public ApplicationSettings(IConfiguration configuration)
+        {
+            DatabaseFilename = configuration.GetValue<string>("DatabaseFilename");
+        }
 
-        //public const SQLite.SQLiteOpenFlags Flags =
-        //    // open the database in read/write mode
-        //    SQLite.SQLiteOpenFlags.ReadWrite |
-        //    // create the database if it doesn't exist
-        //    SQLite.SQLiteOpenFlags.Create |
-        //    // enable multi-threaded database access
-        //    SQLite.SQLiteOpenFlags.SharedCache;
+        public string DatabaseFilename { get; init; }
 
         public string DatabasePath =>
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DatabaseFilename);
     }
-}
+} 

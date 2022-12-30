@@ -1,8 +1,12 @@
 ﻿@page "/users"
 
+@using CSP.MainApp.Model;
 @using CSP.ModuleContracts
 @using System.Net.Http.Headers;
 @using Newtonsoft.Json; 
+@using System.Net;
+
+@inject NavigationManager _navigationManager
 
 <h1>Users example</h1>
 
@@ -14,6 +18,13 @@
 }
 else
 {
+	<EditForm Model="@userModel" OnValidSubmit="@HandleValidSubmit">
+		<InputText id="firstName" @bind-Value="userModel.FirstName" />
+		<InputText id="lastName" @bind-Value="userModel.LastName" />
+
+		<button type="submit">Submit</button>
+	</EditForm>
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -26,9 +37,10 @@ else
 			@foreach (var user in users)
 			{
 				<tr>
-					 <td>@user.id</td>
-					 <td>@user.firstName</td>
-					 <td>@user.lastName</td>
+					 <td>@user.Id</td>
+					 <td>@user.FirstName</td>
+					 <td>@user.LastName</td>
+					 <td><button type="button" @onclick="() => OnDeleteClicked(user)"  >Delete</button></td>
 				</tr>
 			}
 		</tbody>
@@ -36,7 +48,8 @@ else
 }
 
 @code {
-	private dynamic[] users;
+	private User[] users;
+	private User userModel = new User();
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -48,7 +61,37 @@ else
 		response.EnsureSuccessStatusCode();
 		var resp = await response.Content.ReadAsStringAsync();
 
-		var result = JsonConvert.DeserializeObject<List<dynamic>>(resp);
+		var result = JsonConvert.DeserializeObject<List<User>>(resp);
 		users = await Task.FromResult(result.ToArray());
 	} 
+
+	private async Task HandleValidSubmit()
+	{
+		using var client = new HttpClient();
+
+		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+		var url = "http://localhost:8080/users/";
+		var parameters = new Dictionary<string, string> { { "firstName", userModel.FirstName }, { "lastName", userModel.LastName } };
+		var encodedContent = new FormUrlEncodedContent(parameters);
+
+		var response = await client.PutAsync(url, encodedContent).ConfigureAwait(false); 
+		if (response.StatusCode == HttpStatusCode.OK)
+		{
+			_navigationManager.NavigateTo("users", true);
+		} 
+	}
+
+	private async void OnDeleteClicked(User user)
+	{
+		using var client = new HttpClient();
+
+		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+		var url = $"http://localhost:8080/users/{Convert.ToInt64(user.Id)}";
+
+		var response = await client.DeleteAsync(url); 
+		if (response.IsSuccessStatusCode)
+		{
+			_navigationManager.NavigateTo("users", true);
+		} 
+	}
 }

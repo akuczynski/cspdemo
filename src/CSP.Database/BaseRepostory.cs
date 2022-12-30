@@ -35,7 +35,7 @@ public class BaseRepostory<T> : IGenericRepository<T> where T : IEntity, new()
 
 	public async Task<T> GetByIdAsync(long id)
 	{
-		await Init();
+	 	await Init();
 		return await Database.Table<T>().Where(i => i.Id == id).FirstOrDefaultAsync();
 	}
 
