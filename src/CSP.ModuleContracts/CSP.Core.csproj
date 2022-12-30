@@ -8,4 +8,8 @@
     <Configurations>Debug;Release;Android</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />
+  </ItemGroup>
+
 </Project>
