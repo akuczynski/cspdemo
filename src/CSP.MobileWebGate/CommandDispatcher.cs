@@ -1,5 +1,5 @@
 ﻿using CSP.Core.Command;
-using CSP.Users.Command;
+using CSP.MobileWebGate.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,14 +12,14 @@ using Volo.Abp.DependencyInjection;
 namespace CSP.MobileWebGate
 {
 
-	// check this: https://abdelmajid-baco.medium.com/cqrs-pattern-with-c-a9aff05aae3f
-	public class CommandDispatcher : ICommandDispatcher, ISingletonDependency
+    // check this: https://abdelmajid-baco.medium.com/cqrs-pattern-with-c-a9aff05aae3f
+    public class CommandDispatcher : ICommandDispatcher, ISingletonDependency
 	{
-		private CommandSerializer _commandSerializer;
+		private JsonObjectsSerializer _commandSerializer;
 
 		private IServiceProvider _serviceProvider;
 
-		public CommandDispatcher(CommandSerializer commandSerializer, IServiceProvider serviceProvider)
+		public CommandDispatcher(JsonObjectsSerializer commandSerializer, IServiceProvider serviceProvider)
 		{
 			_commandSerializer = commandSerializer;
 			_serviceProvider = serviceProvider; 
@@ -27,12 +27,10 @@ namespace CSP.MobileWebGate
 
 		public ICommandResult Invoke(string commandName, string jsonObject)
 		{
-			var command = _commandSerializer.Deserialize(commandName, jsonObject); 
+			var command = _commandSerializer.DeserializeCommand(commandName, jsonObject); 
 			if (command != null)
 			{
-				//Invoke<AddUserCommand>((AddUserCommand) command);
 				return Invoke(command);
-				//return Invoke<ICommand>(command); 
 			}
 
 			return new EmptyCommandResult();
@@ -40,8 +38,6 @@ namespace CSP.MobileWebGate
 
 		public ICommandResult Invoke<T>(T command) where T : ICommand 
 		{
-			// var type = typeof(ICommandHandler<T>);
-			//			var handlers = _serviceProvider.GetServices<ICommandHandler>();
 			
 			var handler = _serviceProvider.GetRequiredService(typeof(ICommandHandler<T>));
 			if (handler != null)
@@ -65,13 +61,7 @@ namespace CSP.MobileWebGate
 			var handlerObject = _serviceProvider.GetRequiredService(newType);
 			if (handlerObject != null)
 			{
-				// Convert.ChangeType(handlerObject, newType);
-				dynamic changedObj = handlerObject as dynamic; // Convert.ChangeType(handlerObject, newType);
-				changedObj.Execute(command);
-
-				//	var caller = (ICommandHandler<ICommand>) handler;
-
-				//((newType) handler).Execute(command);
+				((ICommandHandler)handlerObject).Execute(command);
 			}
 			else
 			{

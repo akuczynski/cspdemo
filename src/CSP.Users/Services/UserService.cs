@@ -25,8 +25,8 @@ namespace CSP.Users.Services
 		[ResourceMethod]
 		public IReadOnlyList<User> GetUsers(int page, int pageSize)
         {
-			var result = _database.GetAllAsync().Result;
-            return result; 
+            var task = _database.GetAllAsync();
+            return task.Result; 
         }
 
 		// GET http://localhost:8080/users/:id/
@@ -38,10 +38,10 @@ namespace CSP.Users.Services
 		}
 
         [ResourceMethod(RequestMethod.PUT)]
-        public long AddUser(string firstName, string lastName)
+        public async void AddUser(string firstName, string lastName)
         {
             var user = new User { FirstName = firstName, LastName = lastName };
-            return _database.SaveItemAsync(user).Result;
+            await _database.SaveItemAsync(user);
         }
 
 		// POST http://localhost:8080/users/

@@ -13,9 +13,5 @@ namespace CSP.Core.Command
 		ICommandResult Invoke(string commandName, string jsonObject);
 
 		ICommandResult Invoke(ICommand command);
-
-	//	void RegisterCommandHandler<T>(ICommandHandler<T> commandHandler) where T: ICommand;
-
-			//	void RegisterCommandHandler<T>(ICommandHandler<ICommand> commandHandler) where T : ICommand;
 	}
 }

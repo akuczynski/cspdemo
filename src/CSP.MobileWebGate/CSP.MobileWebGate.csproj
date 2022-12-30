@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
-    <ProjectReference Include="..\CSP.Users\CSP.Users.csproj" />
   </ItemGroup>
 
 

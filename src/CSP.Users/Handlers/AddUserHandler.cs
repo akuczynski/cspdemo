@@ -13,19 +13,19 @@ namespace CSP.Users.Handlers
 {
 	public class AddUserHandler : ICommandHandler<AddUserCommand>
 	{
-		public bool CanExecute(AddUserCommand command)
+		public ICommandResult Execute(ICommand command)
 		{
-			return command != null; 
-		} 
+			return Execute((AddUserCommand) command);	
+		}
 
-		public ICommandResult Execute(AddUserCommand command)
+		private ICommandResult Execute(AddUserCommand command)
 		{
 			var userService = new UserService();
-//			var id = userService.AddUser(command.FirstName, command.LastName);
+			userService.AddUser(command.FirstName, command.LastName);
 
-			return new AddUserCommandResult(-1);
+			return new EmptyCommandResult();
 		}
 	}
 
-	internal record AddUserCommandResult(long Id) : ICommandResult;
+ //	internal record AddUserCommandResult(long Id) : ICommandResult;
 }
