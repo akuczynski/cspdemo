@@ -7,7 +7,7 @@ using Volo.Abp.Modularity;
 
 namespace CSP.MainApp;
 
-[DependsOn(typeof(AbpAutofacModule), 
+[DependsOn(typeof(AbpAutofacModule),
 		   typeof(WebGateModule),
 		   typeof(MobileWebGateModule),
 		   typeof(UsersModule), 

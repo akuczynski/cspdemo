@@ -37,9 +37,9 @@
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
 		<AndroidKeyStore>True</AndroidKeyStore>
 		<AndroidSigningKeyStore>csp.demo.keystore</AndroidSigningKeyStore>
-		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass></AndroidSigningKeyPass>
-		<AndroidSigningStorePass></AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>mauiAppKey</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>cspdemo</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>cspdemo</AndroidSigningStorePass>
 	</PropertyGroup>
 	
 	<ItemGroup>
