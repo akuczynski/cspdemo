@@ -56,7 +56,7 @@ else
 		using var client = new HttpClient();
 
 		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-	
+
 		var url = "http://localhost:8080/users/";
 		HttpResponseMessage response = await client.GetAsync(url);
 		response.EnsureSuccessStatusCode();
@@ -70,15 +70,18 @@ else
 	{
 		using var client = new HttpClient();
 
-		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-		var url = "http://localhost:8080/users/";
-		var parameters = new Dictionary<string, string> { { "firstName", userModel.FirstName }, { "lastName", userModel.LastName } };
-		var encodedContent = new FormUrlEncodedContent(parameters);
+		try
+		{
+			// an ugly workaround to make it working on Android device
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			var url = "http://localhost:8080/users/";
+			var parameters = new Dictionary<string, string> { { "firstName", userModel.FirstName }, { "lastName", userModel.LastName } };
+			var encodedContent = new FormUrlEncodedContent(parameters);
 
-		var response = await client.PutAsync(url, encodedContent).ConfigureAwait(false); 
-		response.EnsureSuccessStatusCode();
-
-		if (response.StatusCode == HttpStatusCode.OK)
+			var response = await client.PutAsync(url, encodedContent).ConfigureAwait(false);
+			response.EnsureSuccessStatusCode();
+		}
+		finally
 		{
 			_navigationManager.NavigateTo("users", true);
 		} 
@@ -88,12 +91,14 @@ else
 	{
 		using var client = new HttpClient();
 
-		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-		var url = $"http://localhost:8080/users/{Convert.ToInt64(user.Id)}";
-
-		var response = await client.DeleteAsync(url).ConfigureAwait(false); 
-		response.EnsureSuccessStatusCode();
-		if (response.IsSuccessStatusCode)
+		try
+		{
+			// an ugly workaround to make it working on Android device
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			var url = $"http://localhost:8080/users/{Convert.ToInt64(user.Id)}";
+			var response = await client.DeleteAsync(url).ConfigureAwait(false);
+			response.EnsureSuccessStatusCode();
+		}finally
 		{
 			_navigationManager.NavigateTo("users", true);
 		} 
