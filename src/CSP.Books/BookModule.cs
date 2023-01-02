@@ -8,7 +8,7 @@ using CSP.Books.Services;
 namespace CSP.Books
 {
     [DependsOn(typeof(DatabaseModule))]
-	public class UsersModule : AbpModule
+	public class BookModule : AbpModule
 	{
 		public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
 		{

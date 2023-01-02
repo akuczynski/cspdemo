@@ -31,12 +31,12 @@ public static class MauiProgram
 
 #else
        var appDir = AppDomain.CurrentDomain.BaseDirectory;
-	   var pluginsFolder = Path.Combine(appDir, string.Format("..{0}Modules", Path.DirectorySeparatorChar));
+//	   var pluginsFolder = Path.Combine(appDir, string.Format("..{0}Modules", Path.DirectorySeparatorChar));
 #endif
 		builder.Services.AddApplication<MainAppModule>(options =>
 		{
 			options.Services.ReplaceConfiguration(builder.Configuration);
-            options.PlugInSources.AddFolder(pluginsFolder);
+     //       options.PlugInSources.AddFolder(pluginsFolder);
 		});
 
 

@@ -11,7 +11,8 @@
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
-
+		<!--<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>-->
+		
         <!-- Display name -->
         <ApplicationTitle>CSP.MainApp</ApplicationTitle>
 
@@ -91,7 +92,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
+	  <ProjectReference Include="..\CSP.MobileWebGate\CSP.MobileWebGate.csproj" />
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
+	  <ProjectReference Include="..\CSP.Users\CSP.Users.csproj" />
+	  <ProjectReference Include="..\CSP.WebGate\CSP.WebGate.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,8 +104,6 @@
 	  </None>
 	</ItemGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="xcopy &quot;$(ProjectDir)..\..\Assemblies\*.*&quot; &quot;$(TargetDir)Modules\&quot; /Y /s&#xD;&#xA;" />
-	</Target>
+	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
