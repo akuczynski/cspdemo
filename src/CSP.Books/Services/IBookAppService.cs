@@ -8,11 +8,8 @@ using Volo.Abp.Identity;
 
 namespace CSP.ModuleContracts
 {
-	// an example when service interface is defined in the separate assembly 
 	public interface IBookAppService : IApplicationService
 	{
-		List<Book> GetBooks(int page, int pageSize);
-		
-	//	Task<IEnumerable<IdentityRole>> GetAllRoles();
+		Task<IEnumerable<Book>> GetBooks(int page, int pageSize);
 	}
 }

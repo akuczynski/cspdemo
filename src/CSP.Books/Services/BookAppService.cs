@@ -10,13 +10,13 @@ namespace CSP.Books.Services
 {
 	public class BookAppService : CSPAppService, IBookAppService, ITransientDependency  
     {
-		public List<Book> GetBooks(int page, int pageSize)
+		// GET http://localhost:8080/books/?page=1&pageSize=20
+		public async Task<IEnumerable<Book>> GetBooks(int page, int pageSize)
         { 
-			// GET http://localhost:8080/books/?page=1&pageSize=20
-			return new()
+			return await Task.FromResult(new[]
             {
-                new Book(1, "Lord of the Rings")
-            };
+                new Book { ID = 1, Title = "Lord of the Rings" }
+            });
         }
 
         public Book? GetBook(int id)
