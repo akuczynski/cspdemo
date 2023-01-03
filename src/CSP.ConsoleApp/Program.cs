@@ -30,28 +30,6 @@ public class Program
 
         try
         {
-			//         Log.Information("Starting console host.");
-
-			//         var builder = Host.CreateDefaultBuilder(args);
-			//var appDir = AppDomain.CurrentDomain.BaseDirectory;
-			//       //  var pluginsFolder = Path.Combine(appDir, "Modules");
-
-			//builder.ConfigureServices(services =>
-			//         {
-			//             services.AddHostedService<MyConsoleAppHostedService>();
-			//             services.AddApplicationAsync<MyConsoleAppModule>(options =>
-			//             {
-			//                 options.Services.ReplaceConfiguration(services.GetConfiguration());
-			//                 options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
-			////		options.PlugInSources.AddFolder(pluginsFolder);
-			//	});
-			//         }).UseAutofac().UseConsoleLifetime();
-
-			//      	var host = builder.Build();
-			//         await host.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().InitializeAsync(host.Services);
-
-			//         await host.RunAsync();
-
 			Log.Information("Starting web host.");
 			var builder = WebApplication.CreateBuilder(args);
 			builder.Host.AddAppSettingsSecretsJson()

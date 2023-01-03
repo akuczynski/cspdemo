@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSP.Database\CSP.Database.csproj" />
+    <Compile Remove="Services\CarService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
     <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
-    <ProjectReference Include="..\CSP.Services\CSP.Services.csproj" />
   </ItemGroup>
 </Project>

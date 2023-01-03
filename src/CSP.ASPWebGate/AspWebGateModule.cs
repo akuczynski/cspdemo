@@ -25,6 +25,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+using CSP.Books;
 
 namespace CSP.ASPWebGate
 {
@@ -35,8 +36,9 @@ namespace CSP.ASPWebGate
 	typeof(AbpAutofacModule),
 	typeof(AbpSwashbuckleModule),
 	typeof(AbpAspNetCoreSerilogModule),
-	typeof(AbpAccountWebOpenIddictModule)
-   )]
+	typeof(AbpAccountWebOpenIddictModule),
+	typeof(BookModule)
+	)]
 	public class AspWebGateModule : AbpModule
 	{
 		public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -48,6 +50,7 @@ namespace CSP.ASPWebGate
 					typeof(CSPDomainModule).Assembly,
 					typeof(CSPDomainSharedModule).Assembly,
 					typeof(CSPApplicationModule).Assembly,
+					typeof(BookModule).Assembly,
 					typeof(CSPApplicationContractsModule).Assembly
 				);
 			});
@@ -149,6 +152,7 @@ namespace CSP.ASPWebGate
 			Configure<AbpAspNetCoreMvcOptions>(options =>
 			{
 				options.ConventionalControllers.Create(typeof(CSPApplicationModule).Assembly);
+				options.ConventionalControllers.Create(typeof(BookModule).Assembly);
 			});
 		}
 
@@ -162,11 +166,11 @@ namespace CSP.ASPWebGate
 
 		public override void OnApplicationInitialization(ApplicationInitializationContext context)
 		{
-			var configuraiton = context.ServiceProvider.GetService<IConfiguration>();
-			var webHostInProcess = configuraiton.GetValue<bool?>("AspWebHostInProcess");
+			//var configuraiton = context.ServiceProvider.GetService<IConfiguration>();
+			//var webHostInProcess = configuraiton.GetValue<bool?>("AspWebHostInProcess");
 
-			if (webHostInProcess == null || webHostInProcess == true)
-			{
+			//if (webHostInProcess == null || webHostInProcess == true)
+			//{
 				var env = context.GetEnvironment();
 				var app = context.GetApplicationBuilder();
 
@@ -202,7 +206,7 @@ namespace CSP.ASPWebGate
 					options.SwaggerEndpoint("/swagger/v1/swagger.json", "CSP API");
 				});
 				app.UseConfiguredEndpoints();
-			}
+	//		}
 		} 
 	}
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Services;
 
 namespace CSP.ModuleContracts
 {
 	// an example when service interface is defined in the separate assembly 
-	public interface IBookService 
+	public interface IBookAppService : IApplicationService
 	{
 		List<Book> GetBooks(int page, int pageSize);
 	}

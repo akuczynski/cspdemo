@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using CSP.ModuleContracts;
-using GenHTTP.Api.Protocol;
-
-using GenHTTP.Modules.Webservices;
 using Volo.Abp.DependencyInjection;
 
 namespace CSP.Books.Services
 {
-
-    // For documentation, see: https://genhttp.org/documentation/content/webservices
-
-    public class BookService : IBookService, ITransientDependency
-    {
-        [ResourceMethod]
-        public List<Book> GetBooks(int page, int pageSize)
+    public class BookAppService : CSPAppService, IBookAppService
+    { 
+		public List<Book> GetBooks(int page, int pageSize)
         {
             // GET http://localhost:8080/books/?page=1&pageSize=20
             return new()
@@ -23,28 +16,24 @@ namespace CSP.Books.Services
             };
         }
 
-        [ResourceMethod(":id")]
         public Book? GetBook(int id)
         {
             // GET http://localhost:8080/books/:id/
             throw new NotImplementedException();
         }
 
-        [ResourceMethod(RequestMethod.PUT)]
         public Book AddBook(Book book)
         {
             // PUT http://localhost:8080/books/
             throw new NotImplementedException();
         }
 
-        [ResourceMethod(RequestMethod.POST)]
         public Book? UpdateBook(Book book)
         {
             // POST http://localhost:8080/books/
             throw new NotImplementedException();
         }
 
-        [ResourceMethod(RequestMethod.DELETE, ":id")]
         public Book? DeleteBook(int id)
         {
             // DELETE http://localhost:8080/books/:id/
