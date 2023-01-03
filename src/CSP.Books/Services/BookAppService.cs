@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using CSP.ModuleContracts;
+using Volo.Abp.Auditing;
 using Volo.Abp.DependencyInjection;
 
 namespace CSP.Books.Services
 {
-    public class BookAppService : CSPAppService, IBookAppService
+	[DisableAuditing]
+	public class BookAppService : CSPAppService, IBookAppService, ITransientDependency  
     { 
 		public List<Book> GetBooks(int page, int pageSize)
         {

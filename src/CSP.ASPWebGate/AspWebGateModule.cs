@@ -92,7 +92,7 @@ namespace CSP.ASPWebGate
 				options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
 				options.RedirectAllowedUrls.AddRange(configuration["App:RedirectAllowedUrls"].Split(','));
 			});
-		} 
+		}
 
 		private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
 		{
@@ -145,7 +145,7 @@ namespace CSP.ASPWebGate
 					options.CustomSchemaIds(type => type.FullName);
 				}
 			);
-		}  
+		}
 
 		private void ConfigureAutoApiControllers()
 		{
@@ -166,47 +166,41 @@ namespace CSP.ASPWebGate
 
 		public override void OnApplicationInitialization(ApplicationInitializationContext context)
 		{
-			//var configuraiton = context.ServiceProvider.GetService<IConfiguration>();
-			//var webHostInProcess = configuraiton.GetValue<bool?>("AspWebHostInProcess");
+			var env = context.GetEnvironment();
+			var app = context.GetApplicationBuilder();
 
-			//if (webHostInProcess == null || webHostInProcess == true)
-			//{
-				var env = context.GetEnvironment();
-				var app = context.GetApplicationBuilder();
+			app.UseAbpRequestLocalization();
 
-				app.UseAbpRequestLocalization();
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
+			{
+				app.UseExceptionHandler("/Error");
+				app.UseHsts();
+			}
 
-				if (env.IsDevelopment())
-				{
-					app.UseDeveloperExceptionPage();
-				}
-				else
-				{
-					app.UseExceptionHandler("/Error");
-					app.UseHsts();
-				}
+			app.UseHttpsRedirection();
+			app.UseCorrelationId();
+			app.UseStaticFiles();
+			app.UseRouting();
+			app.UseAuthentication();
+			app.UseAbpOpenIddictValidation();
 
-				app.UseHttpsRedirection();
-				app.UseCorrelationId();
-				app.UseStaticFiles();
-				app.UseRouting();
-				app.UseAuthentication();
-				app.UseAbpOpenIddictValidation();
+			if (MultiTenancyConsts.IsEnabled)
+			{
+				app.UseMultiTenancy();
+			}
 
-				if (MultiTenancyConsts.IsEnabled)
-				{
-					app.UseMultiTenancy();
-				}
-
-				app.UseUnitOfWork();
-				app.UseAuthorization();
-				app.UseSwagger();
-				app.UseAbpSwaggerUI(options =>
-				{
-					options.SwaggerEndpoint("/swagger/v1/swagger.json", "CSP API");
-				});
-				app.UseConfiguredEndpoints();
-	//		}
-		} 
+			app.UseUnitOfWork();
+			app.UseAuthorization();
+			app.UseSwagger();
+			app.UseAbpSwaggerUI(options =>
+			{
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "CSP API");
+			});
+			app.UseConfiguredEndpoints();
+		}
 	}
 }

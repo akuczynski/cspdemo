@@ -34,7 +34,8 @@ public class Program
 			var builder = WebApplication.CreateBuilder(args);
 			builder.Host.AddAppSettingsSecretsJson()
 				.UseAutofac()
-				.UseSerilog();
+               .UseSerilog();
+
 			await builder.AddApplicationAsync<AspWebGateModule>();
 			var app = builder.Build();
 			await app.InitializeApplicationAsync();

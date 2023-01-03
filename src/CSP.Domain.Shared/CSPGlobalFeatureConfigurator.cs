@@ -10,6 +10,7 @@ public static class CSPGlobalFeatureConfigurator
     {
         OneTimeRunner.Run(() =>
         {
+
                 /* You can configure (enable/disable) global features of the used modules here.
                  *
                  * YOU CAN SAFELY DELETE THIS CLASS AND REMOVE ITS USAGES IF YOU DON'T NEED TO IT!
