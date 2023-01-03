@@ -25,7 +25,6 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using CSP.Books;
 
 namespace CSP.ASPWebGate
 {
@@ -36,8 +35,7 @@ namespace CSP.ASPWebGate
 	typeof(AbpAutofacModule),
 	typeof(AbpSwashbuckleModule),
 	typeof(AbpAspNetCoreSerilogModule),
-	typeof(AbpAccountWebOpenIddictModule),
-	typeof(BookModule)
+	typeof(AbpAccountWebOpenIddictModule)
 	)]
 	public class AspWebGateModule : AbpModule
 	{
@@ -50,7 +48,6 @@ namespace CSP.ASPWebGate
 					typeof(CSPDomainModule).Assembly,
 					typeof(CSPDomainSharedModule).Assembly,
 					typeof(CSPApplicationModule).Assembly,
-					typeof(BookModule).Assembly,
 					typeof(CSPApplicationContractsModule).Assembly
 				);
 			});
@@ -152,7 +149,6 @@ namespace CSP.ASPWebGate
 			Configure<AbpAspNetCoreMvcOptions>(options =>
 			{
 				options.ConventionalControllers.Create(typeof(CSPApplicationModule).Assembly);
-				options.ConventionalControllers.Create(typeof(BookModule).Assembly);
 			});
 		}
 

@@ -30,13 +30,19 @@ public class Program
 
         try
         {
+			var appDir = AppDomain.CurrentDomain.BaseDirectory;
+			var pluginsFolder = Path.Combine(appDir, "Modules");
+
 			Log.Information("Starting web host.");
 			var builder = WebApplication.CreateBuilder(args);
 			builder.Host.AddAppSettingsSecretsJson()
 				.UseAutofac()
                .UseSerilog();
 
-			await builder.AddApplicationAsync<AspWebGateModule>();
+			await builder.AddApplicationAsync<AspWebGateModule>(options =>
+            {
+				options.PlugInSources.AddFolder(pluginsFolder);
+			});
 			var app = builder.Build();
 			await app.InitializeApplicationAsync();
 			await app.RunAsync();

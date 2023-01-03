@@ -40,8 +40,8 @@
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	</ItemGroup>
 
-	<!--<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="xcopy &quot;$(ProjectDir)..\..\Assemblies\*.*&quot; &quot;$(TargetDir)Modules\&quot; /Y /s" />
-	</Target>-->
+	</Target>
 
 </Project>

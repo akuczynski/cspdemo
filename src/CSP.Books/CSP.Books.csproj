@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
     <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)..\..\Assemblies\&quot; /Y" />
+	</Target>
 </Project>
