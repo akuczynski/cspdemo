@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using CSP.ASPWebGate;
-using CSP.Books;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,13 +14,15 @@ namespace Acme.MyConsoleApp;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-	typeof(BookModule)
+	typeof(AspWebGateModule)
 )]
 public class MyConsoleAppModule : AbpModule
 {
     public override Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
     {
-        var logger = context.ServiceProvider.GetRequiredService<ILogger<MyConsoleAppModule>>();
+        var env = context.GetEnvironment();
+
+		var logger = context.ServiceProvider.GetRequiredService<ILogger<MyConsoleAppModule>>();
         var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
         logger.LogInformation($"MySettingName => {configuration["MySettingName"]}");
 
@@ -30,17 +31,4 @@ public class MyConsoleAppModule : AbpModule
 
         return Task.CompletedTask;
     }
-
-	public override void ConfigureServices(ServiceConfigurationContext context)
-	{
-		ConfigureAutoApiControllers();
-	}
-
-	private void ConfigureAutoApiControllers()
-	{
-		Configure<AbpAspNetCoreMvcOptions>(options =>
-		{
-			options.ConventionalControllers.Create(typeof(BookModule).Assembly);
-		});
-	}
 }

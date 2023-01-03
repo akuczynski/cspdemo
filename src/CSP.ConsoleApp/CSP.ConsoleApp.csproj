@@ -33,7 +33,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.ASPWebGate\CSP.ASPWebGate.csproj" />
-	  <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	</ItemGroup>
 
