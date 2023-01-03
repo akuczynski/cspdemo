@@ -32,6 +32,11 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
         <Platforms>AnyCPU;ARM64;x64</Platforms>
         <Configurations>Debug;Release;Android</Configurations>
+        <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+        <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+        <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+        <GenerateTestArtifacts>True</GenerateTestArtifacts>
+        <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     </PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
@@ -40,6 +45,12 @@
 		<AndroidSigningKeyAlias>mauiAppKey</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass>cspdemo</AndroidSigningKeyPass>
 		<AndroidSigningStorePass>cspdemo</AndroidSigningStorePass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(RunConfiguration)'=='Default'">
+	  <EnvironmentVariables>
+			<Variable name="DOTNET_DiagnosticPorts" value="myapp.sock" />
+		</EnvironmentVariables>
 	</PropertyGroup>
 	
 	<ItemGroup>
