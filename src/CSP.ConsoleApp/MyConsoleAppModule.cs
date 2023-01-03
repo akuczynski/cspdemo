@@ -1,10 +1,13 @@
 ﻿using System.Threading.Tasks;
 using CSP.ASPWebGate;
+using CSP.Books;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
+using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
@@ -12,7 +15,7 @@ namespace Acme.MyConsoleApp;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(AspWebGateModule)
+	typeof(BookModule)
 )]
 public class MyConsoleAppModule : AbpModule
 {
@@ -27,4 +30,17 @@ public class MyConsoleAppModule : AbpModule
 
         return Task.CompletedTask;
     }
+
+	public override void ConfigureServices(ServiceConfigurationContext context)
+	{
+		ConfigureAutoApiControllers();
+	}
+
+	private void ConfigureAutoApiControllers()
+	{
+		Configure<AbpAspNetCoreMvcOptions>(options =>
+		{
+			options.ConventionalControllers.Create(typeof(BookModule).Assembly);
+		});
+	}
 }

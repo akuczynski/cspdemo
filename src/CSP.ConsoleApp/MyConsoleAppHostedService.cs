@@ -1,39 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CSP.ASPWebGate;
 using CSP.ModuleContracts;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using Volo.Abp;
 
 namespace Acme.MyConsoleApp;
 
-public class MyConsoleAppHostedService : IHostedService
+public class MyConsoleAppHostedService :  IHostedService
 {
 	private readonly IAbpApplicationWithExternalServiceProvider _abpApplication;
 
-	private IEnumerable<IHostService> _hostServices;
-
-	private IConfiguration _configuration;
-
-	public MyConsoleAppHostedService(IAbpApplicationWithExternalServiceProvider abpApplication,
-									  IConfiguration configuration,
-									  IEnumerable<IHostService> hostServices)
+	public MyConsoleAppHostedService(IAbpApplicationWithExternalServiceProvider abpApplication)
 	{
 		_abpApplication = abpApplication;
-		_hostServices = hostServices;
-		_configuration = configuration;
 	}
 
 	public async Task StartAsync(CancellationToken cancellationToken)
 	{
-		var hostName = _configuration.GetValue<string>("HostName");
-		var host = _hostServices.Where(x => x.Name == hostName).FirstOrDefault();
-		if (host == null)
+		var appDir = AppDomain.CurrentDomain.BaseDirectory;
+		var pluginsFolder = Path.Combine(appDir, "Modules");
+
+		Log.Information("Starting web host.");
+		var builder = WebApplication.CreateBuilder();
+		builder.Host.AddAppSettingsSecretsJson()
+			.UseAutofac()
+			.UseSerilog();
+
+		await builder.AddApplicationAsync<AspWebGateModule>(options =>
 		{
-			await host.RunAsync();
-		}
+			 //	options.PlugInSources.AddFolder(pluginsFolder);
+		});
+
+		var app = builder.Build();
+		await app.InitializeApplicationAsync();
+		await app.RunAsync();
 	}
 
 	public async Task StopAsync(CancellationToken cancellationToken)

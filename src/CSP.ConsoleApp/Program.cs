@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CSP.ASPWebGate;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -30,24 +31,48 @@ public class Program
 
         try
         {
+			//	var appDir = AppDomain.CurrentDomain.BaseDirectory;
+			//	var pluginsFolder = Path.Combine(appDir, "Modules");
+
+			//Log.Information("Starting web host.");
+			//var builder = WebApplication.CreateBuilder(args);
+			//builder.Host.AddAppSettingsSecretsJson()
+			//	.UseAutofac()
+			//             .UseSerilog();
+
+			//await builder.AddApplicationAsync<AspWebGateModule>(options =>
+			//         {
+			////	options.PlugInSources.AddFolder(pluginsFolder);
+			//});
+			//var app = builder.Build();
+			//await app.InitializeApplicationAsync();
+			//await app.RunAsync();
+			//return 0;
+
+			var builder = Host.CreateDefaultBuilder(args);
 			var appDir = AppDomain.CurrentDomain.BaseDirectory;
 			var pluginsFolder = Path.Combine(appDir, "Modules");
 
-			Log.Information("Starting web host.");
-			var builder = WebApplication.CreateBuilder(args);
-			builder.Host.AddAppSettingsSecretsJson()
-				.UseAutofac()
-               .UseSerilog();
+			builder.ConfigureServices(services =>
+			{
+				services.AddHostedService<MyConsoleAppHostedService>();
+				services.AddApplicationAsync<MyConsoleAppModule>(options =>
+				{
+					options.Services.ReplaceConfiguration(services.GetConfiguration());
+					options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
+				//	options.PlugInSources.AddFolder(pluginsFolder);
+				});
+			}).ConfigureWebHostDefaults(webBuilder =>
+			{
+//				webBuilder.UseStartup<>//
+			}).UseAutofac().UseConsoleLifetime();
 
-			await builder.AddApplicationAsync<AspWebGateModule>(options =>
-            {
-				options.PlugInSources.AddFolder(pluginsFolder);
-			});
-			var app = builder.Build();
-			await app.InitializeApplicationAsync();
-			await app.RunAsync();
+			var host = builder.Build();
+			await host.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().InitializeAsync(host.Services);
+
+			await host.RunAsync();
 			return 0;
-        }
+		}
         catch (Exception ex)
         {
             Log.Fatal(ex, "Host terminated unexpectedly!");
