@@ -25,7 +25,6 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using CSP.WebAPI;
 
 namespace CSP.ASPWebGate
 {
@@ -36,8 +35,7 @@ namespace CSP.ASPWebGate
 	typeof(AbpAutofacModule),
 	typeof(AbpSwashbuckleModule),
 	typeof(AbpAspNetCoreSerilogModule),
-	typeof(AbpAccountWebOpenIddictModule),
-	typeof(WebAPIModule)
+	typeof(AbpAccountWebOpenIddictModule)
 	)]
 	public class AspWebGateModule : AbpModule
 	{

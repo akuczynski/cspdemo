@@ -22,7 +22,6 @@
     <ProjectReference Include="..\CSP.HttpApi.Client\CSP.HttpApi.Client.csproj" />
     <ProjectReference Include="..\CSP.HttpApi\CSP.HttpApi.csproj" />
     <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
-    <ProjectReference Include="..\CSP.WebAPI\CSP.WebAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

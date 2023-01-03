@@ -8,9 +8,10 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using Volo.Abp.AspNetCore.Mvc;
+using CSP.Books;
 
 namespace CSP;
-
 [DependsOn(
     typeof(CSPApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
@@ -25,7 +26,8 @@ public class CSPHttpApiModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         ConfigureLocalization();
-    }
+        ConfigureAutoApiControllers();
+	}
 
     private void ConfigureLocalization()
     {
@@ -38,4 +40,12 @@ public class CSPHttpApiModule : AbpModule
                 );
         });
     }
+
+	private void ConfigureAutoApiControllers()
+	{
+		Configure<AbpAspNetCoreMvcOptions>(options =>
+		{
+			options.ConventionalControllers.Create(typeof(BookModule).Assembly);
+		});
+	}
 }

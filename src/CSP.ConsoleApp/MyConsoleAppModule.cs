@@ -20,8 +20,6 @@ public class MyConsoleAppModule : AbpModule
 {
     public override Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
     {
-        var env = context.GetEnvironment();
-
 		var logger = context.ServiceProvider.GetRequiredService<ILogger<MyConsoleAppModule>>();
         var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
         logger.LogInformation($"MySettingName => {configuration["MySettingName"]}");

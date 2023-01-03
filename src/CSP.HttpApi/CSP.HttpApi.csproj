@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSP.Application.Contracts\CSP.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
   </ItemGroup>
 
   <ItemGroup>
