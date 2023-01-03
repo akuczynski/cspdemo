@@ -18150,3 +18150,858 @@ SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[Ex
 FROM [AbpBackgroundJobs] AS [a]
 WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
 ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:27:26.996 +01:00 [INF] Starting web host.
+2023-01-03 15:27:32.834 +01:00 [INF] Loaded ABP modules:
+2023-01-03 15:27:32.836 +01:00 [INF] - CSP.ASPWebGate.AspWebGateModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - CSP.CSPApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - CSP.CSPDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - CSP.CSPDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2023-01-03 15:27:32.836 +01:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2023-01-03 15:27:32.836 +01:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2023-01-03 15:27:32.836 +01:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2023-01-03 15:27:32.836 +01:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2023-01-03 15:27:32.836 +01:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2023-01-03 15:27:32.836 +01:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2023-01-03 15:27:32.836 +01:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2023-01-03 15:27:32.836 +01:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.OpenIddict.AbpOpenIddictDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Domain.AbpDddDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.EventBus.AbpEventBusModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Guids.AbpGuidsModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Specifications.AbpSpecificationsModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.OpenIddict.AbpOpenIddictDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.PermissionManagement.OpenIddict.AbpPermissionManagementDomainOpenIddictModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - CSP.CSPApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - CSP.EntityFrameworkCore.CSPEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.OpenIddict.EntityFrameworkCore.AbpOpenIddictEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - CSP.CSPHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2023-01-03 15:27:32.836 +01:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebOpenIddictModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.Account.Web.AbpAccountWebModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2023-01-03 15:27:32.836 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2023-01-03 15:27:32.836 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2023-01-03 15:27:32.836 +01:00 [INF]     - Volo.Abp.OpenIddict.AbpOpenIddictAspNetCoreModule
+2023-01-03 15:27:32.836 +01:00 [INF]       - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2023-01-03 15:27:32.836 +01:00 [INF]   - CSP.WebAPI.WebAPIModule
+2023-01-03 15:27:32.881 +01:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2023-01-03 15:27:32.887 +01:00 [DBG] Started background worker: Volo.Abp.OpenIddict.Tokens.TokenCleanupBackgroundWorker
+2023-01-03 15:27:36.257 +01:00 [INF] User profile is available. Using 'C:\Users\adrian.kuczynski2\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-03 15:27:36.337 +01:00 [INF] Initialized all ABP modules.
+2023-01-03 15:27:36.452 +01:00 [INF] Now listening on: https://localhost:51905
+2023-01-03 15:27:36.452 +01:00 [INF] Now listening on: http://localhost:51906
+2023-01-03 15:27:36.452 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-03 15:27:36.452 +01:00 [INF] Hosting environment: Development
+2023-01-03 15:27:36.452 +01:00 [INF] Content root path: C:\Workspace\MAUI\src\CSP.ConsoleApp\
+2023-01-03 15:27:37.005 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/ - -
+2023-01-03 15:27:38.012 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:38.311 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:38.704 +01:00 [INF] Executed DbCommand (62ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:27:38.704 +01:00 [INF] Executed DbCommand (62ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:27:38.935 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:38.943 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:27:39.048 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:39.063 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:27:39.064 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:39.065 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:27:39.080 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:27:39.082 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:27:39.092 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:27:39.092 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:39.092 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:39.093 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:27:39.233 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/ - - - 404 0 - 2228.0828ms
+2023-01-03 15:27:40.595 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/index.html - -
+2023-01-03 15:27:40.600 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:40.601 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:40.601 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:27:40.646 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/index.html - - - 200 - text/html;charset=utf-8 50.9777ms
+2023-01-03 15:27:40.685 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - -
+2023-01-03 15:27:40.688 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.2021ms
+2023-01-03 15:27:40.758 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - -
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:40.759 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:40.759 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:27:40.920 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 162.2477ms
+2023-01-03 15:27:43.926 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:43.928 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:27:47.074 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/abp/Swashbuckle/SetCsrfCookie - -
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:47.075 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:47.075 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:27:47.079 +01:00 [INF] Executing endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2023-01-03 15:27:47.092 +01:00 [INF] Route matched with {area = "Abp", action = "SetCsrfCookie", controller = "AbpSwashbuckle", page = ""}. Executing controller action with signature Void SetCsrfCookie() on controller Volo.Abp.Swashbuckle.AbpSwashbuckleController (Volo.Abp.Swashbuckle).
+2023-01-03 15:27:47.134 +01:00 [INF] Executed action Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle) in 38.4058ms
+2023-01-03 15:27:47.134 +01:00 [INF] Executed endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2023-01-03 15:27:47.135 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/abp/Swashbuckle/SetCsrfCookie - - - 204 - - 60.7820ms
+2023-01-03 15:27:47.183 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/api/app/book/roles - -
+2023-01-03 15:27:47.183 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:47.184 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:27:47.184 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:27:47.185 +01:00 [INF] Executing endpoint 'CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books)'
+2023-01-03 15:27:47.198 +01:00 [INF] Route matched with {action = "GetAllRoles", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[System.Collections.Generic.IEnumerable`1[Volo.Abp.Identity.IdentityRole]] GetAllRoles() on controller CSP.Books.Services.BookAppService (CSP.Books).
+2023-01-03 15:27:47.223 +01:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "data": {},
+  "validationErrors": null
+}
+
+2023-01-03 15:27:47.224 +01:00 [ERR] The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-01-03 15:27:47.251 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2023-01-03 15:27:47.256 +01:00 [INF] Executed action CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books) in 58.4214ms
+2023-01-03 15:27:47.256 +01:00 [INF] Executed endpoint 'CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books)'
+2023-01-03 15:27:47.256 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/api/app/book/roles - - - 500 - application/json;+charset=utf-8 73.4632ms
+2023-01-03 15:27:48.948 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:48.950 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:27:53.959 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:53.962 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:27:58.964 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:27:58.966 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:28:02.932 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/api/app/book/roles - -
+2023-01-03 15:28:02.934 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:02.934 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:28:02.934 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:02.934 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:28:02.935 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:28:02.935 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:28:02.935 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:28:02.935 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:02.935 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:02.935 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:28:02.935 +01:00 [INF] Executing endpoint 'CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books)'
+2023-01-03 15:28:02.935 +01:00 [INF] Route matched with {action = "GetAllRoles", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[System.Collections.Generic.IEnumerable`1[Volo.Abp.Identity.IdentityRole]] GetAllRoles() on controller CSP.Books.Services.BookAppService (CSP.Books).
+2023-01-03 15:28:02.936 +01:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "data": {},
+  "validationErrors": null
+}
+
+2023-01-03 15:28:02.936 +01:00 [ERR] The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-01-03 15:28:02.936 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2023-01-03 15:28:02.936 +01:00 [INF] Executed action CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books) in 0.9427ms
+2023-01-03 15:28:02.936 +01:00 [INF] Executed endpoint 'CSP.Books.Services.BookAppService.GetAllRoles (CSP.Books)'
+2023-01-03 15:28:02.936 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/api/app/book/roles - - - 500 - application/json;+charset=utf-8 3.9926ms
+2023-01-03 15:28:03.979 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:28:03.981 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:28:08.991 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:28:08.993 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:28:10.326 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/api/app/book/books - -
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:10.326 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:10.326 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:28:10.327 +01:00 [INF] Executing endpoint 'CSP.Books.Services.BookAppService.GetBooks (CSP.Books)'
+2023-01-03 15:28:10.337 +01:00 [INF] Route matched with {action = "GetBooks", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Collections.Generic.List`1[CSP.ModuleContracts.Book] GetBooks(Int32, Int32) on controller CSP.Books.Services.BookAppService (CSP.Books).
+2023-01-03 15:28:10.338 +01:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "data": {},
+  "validationErrors": null
+}
+
+2023-01-03 15:28:10.338 +01:00 [ERR] The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-01-03 15:28:10.338 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2023-01-03 15:28:10.338 +01:00 [INF] Executed action CSP.Books.Services.BookAppService.GetBooks (CSP.Books) in 1.231ms
+2023-01-03 15:28:10.339 +01:00 [INF] Executed endpoint 'CSP.Books.Services.BookAppService.GetBooks (CSP.Books)'
+2023-01-03 15:28:10.339 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/api/app/book/books - - - 500 - application/json;+charset=utf-8 13.0428ms
+2023-01-03 15:28:12.308 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/api/app/book/books?page=1&pageSize=1 - -
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:12.312 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:28:12.312 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:28:12.313 +01:00 [INF] Executing endpoint 'CSP.Books.Services.BookAppService.GetBooks (CSP.Books)'
+2023-01-03 15:28:12.313 +01:00 [INF] Route matched with {action = "GetBooks", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Collections.Generic.List`1[CSP.ModuleContracts.Book] GetBooks(Int32, Int32) on controller CSP.Books.Services.BookAppService (CSP.Books).
+2023-01-03 15:28:12.314 +01:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "data": {},
+  "validationErrors": null
+}
+
+2023-01-03 15:28:12.314 +01:00 [ERR] The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'CSP.Books.Services.BookAppService' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-01-03 15:28:12.314 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2023-01-03 15:28:12.314 +01:00 [INF] Executed action CSP.Books.Services.BookAppService.GetBooks (CSP.Books) in 1.0684ms
+2023-01-03 15:28:12.314 +01:00 [INF] Executed endpoint 'CSP.Books.Services.BookAppService.GetBooks (CSP.Books)'
+2023-01-03 15:28:12.314 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/api/app/book/books?page=1&pageSize=1 - - - 500 - application/json;+charset=utf-8 6.1821ms
+2023-01-03 15:28:14.014 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:28:14.016 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:28:19.029 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:28:19.031 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:34:01.235 +01:00 [INF] Starting web host.
+2023-01-03 15:34:04.296 +01:00 [INF] Loaded ABP modules:
+2023-01-03 15:34:04.297 +01:00 [INF] - CSP.ASPWebGate.AspWebGateModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - CSP.CSPApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - CSP.CSPDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - CSP.CSPDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2023-01-03 15:34:04.297 +01:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2023-01-03 15:34:04.297 +01:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2023-01-03 15:34:04.297 +01:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2023-01-03 15:34:04.297 +01:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2023-01-03 15:34:04.297 +01:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2023-01-03 15:34:04.297 +01:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2023-01-03 15:34:04.297 +01:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2023-01-03 15:34:04.297 +01:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.OpenIddict.AbpOpenIddictDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Domain.AbpDddDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.EventBus.AbpEventBusModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Guids.AbpGuidsModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Specifications.AbpSpecificationsModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.OpenIddict.AbpOpenIddictDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.PermissionManagement.OpenIddict.AbpPermissionManagementDomainOpenIddictModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - CSP.CSPApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - CSP.EntityFrameworkCore.CSPEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.OpenIddict.EntityFrameworkCore.AbpOpenIddictEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - CSP.CSPHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2023-01-03 15:34:04.297 +01:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebOpenIddictModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.Account.Web.AbpAccountWebModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2023-01-03 15:34:04.297 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2023-01-03 15:34:04.297 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2023-01-03 15:34:04.297 +01:00 [INF]     - Volo.Abp.OpenIddict.AbpOpenIddictAspNetCoreModule
+2023-01-03 15:34:04.297 +01:00 [INF]       - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2023-01-03 15:34:04.297 +01:00 [INF]   - CSP.WebAPI.WebAPIModule
+2023-01-03 15:34:04.332 +01:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2023-01-03 15:34:04.336 +01:00 [DBG] Started background worker: Volo.Abp.OpenIddict.Tokens.TokenCleanupBackgroundWorker
+2023-01-03 15:34:04.688 +01:00 [INF] User profile is available. Using 'C:\Users\adrian.kuczynski2\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-03 15:34:04.769 +01:00 [INF] Initialized all ABP modules.
+2023-01-03 15:34:04.917 +01:00 [INF] Now listening on: https://localhost:51905
+2023-01-03 15:34:04.917 +01:00 [INF] Now listening on: http://localhost:51906
+2023-01-03 15:34:04.917 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-03 15:34:04.917 +01:00 [INF] Hosting environment: Development
+2023-01-03 15:34:04.917 +01:00 [INF] Content root path: C:\Workspace\MAUI\src\CSP.ConsoleApp\
+2023-01-03 15:34:05.703 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/ - -
+2023-01-03 15:34:06.791 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:07.600 +01:00 [INF] Executed DbCommand (73ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:34:07.837 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:07.847 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:34:08.028 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:08.054 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:34:08.055 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:08.056 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:34:08.092 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:34:08.099 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:34:08.101 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:34:08.102 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:34:08.104 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:08.104 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:08.104 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:34:08.432 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/ - - - 404 0 - 2730.2936ms
+2023-01-03 15:34:09.685 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:09.711 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:34:12.111 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/index.html - -
+2023-01-03 15:34:12.117 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:12.118 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:34:12.118 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:12.118 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:34:12.118 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:34:12.118 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:34:12.118 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:34:12.119 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:34:12.119 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:12.119 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:12.119 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:34:12.173 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/index.html - - - 200 - text/html;charset=utf-8 62.2081ms
+2023-01-03 15:34:12.185 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - -
+2023-01-03 15:34:12.190 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 4.8045ms
+2023-01-03 15:34:12.263 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - -
+2023-01-03 15:34:12.264 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:12.264 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:34:12.264 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:34:12.264 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:34:12.265 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:34:12.265 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:34:12.265 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:34:12.265 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:34:12.265 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:12.265 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:34:12.265 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:34:12.444 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 180.9822ms
+2023-01-03 15:34:14.751 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:14.755 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:34:19.774 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:19.775 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:34:24.791 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:34:24.793 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:34:44.079 +01:00 [INF] Starting web host.
+2023-01-03 15:35:01.958 +01:00 [INF] Starting web host.
+2023-01-03 15:35:04.865 +01:00 [INF] Loaded ABP modules:
+2023-01-03 15:35:04.867 +01:00 [INF] - CSP.ASPWebGate.AspWebGateModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - CSP.CSPApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - CSP.CSPDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - CSP.CSPDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2023-01-03 15:35:04.867 +01:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2023-01-03 15:35:04.867 +01:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2023-01-03 15:35:04.867 +01:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2023-01-03 15:35:04.867 +01:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2023-01-03 15:35:04.867 +01:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2023-01-03 15:35:04.867 +01:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2023-01-03 15:35:04.867 +01:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2023-01-03 15:35:04.867 +01:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.OpenIddict.AbpOpenIddictDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Domain.AbpDddDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.EventBus.AbpEventBusModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Guids.AbpGuidsModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Specifications.AbpSpecificationsModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.OpenIddict.AbpOpenIddictDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.PermissionManagement.OpenIddict.AbpPermissionManagementDomainOpenIddictModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - CSP.CSPApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - CSP.EntityFrameworkCore.CSPEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.OpenIddict.EntityFrameworkCore.AbpOpenIddictEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - CSP.CSPHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2023-01-03 15:35:04.867 +01:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebOpenIddictModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.Account.Web.AbpAccountWebModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2023-01-03 15:35:04.867 +01:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2023-01-03 15:35:04.867 +01:00 [INF]           - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2023-01-03 15:35:04.867 +01:00 [INF]     - Volo.Abp.OpenIddict.AbpOpenIddictAspNetCoreModule
+2023-01-03 15:35:04.867 +01:00 [INF]       - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2023-01-03 15:35:04.867 +01:00 [INF]   - CSP.WebAPI.WebAPIModule
+2023-01-03 15:35:04.913 +01:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2023-01-03 15:35:04.917 +01:00 [DBG] Started background worker: Volo.Abp.OpenIddict.Tokens.TokenCleanupBackgroundWorker
+2023-01-03 15:35:05.297 +01:00 [INF] User profile is available. Using 'C:\Users\adrian.kuczynski2\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-03 15:35:05.386 +01:00 [INF] Initialized all ABP modules.
+2023-01-03 15:35:05.533 +01:00 [INF] Now listening on: https://localhost:51905
+2023-01-03 15:35:05.533 +01:00 [INF] Now listening on: http://localhost:51906
+2023-01-03 15:35:05.534 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-03 15:35:05.534 +01:00 [INF] Hosting environment: Development
+2023-01-03 15:35:05.534 +01:00 [INF] Content root path: C:\Workspace\MAUI\src\CSP.ConsoleApp\
+2023-01-03 15:35:06.428 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/ - -
+2023-01-03 15:35:07.629 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:08.431 +01:00 [INF] Executed DbCommand (74ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:35:08.642 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'SettingManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:08.650 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[ProviderKey], [a].[ProviderName], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ([a].[ProviderName] = @__providerName_0) AND ([a].[ProviderKey] IS NULL)
+2023-01-03 15:35:08.765 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:08.780 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:35:08.780 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:08.781 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:35:08.802 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:35:08.810 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:35:08.812 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:35:08.814 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:35:08.815 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:08.815 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:08.816 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:35:09.119 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/ - - - 404 0 - 2692.3301ms
+2023-01-03 15:35:10.227 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:10.252 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:35:11.541 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/index.html - -
+2023-01-03 15:35:11.548 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:11.548 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:35:11.548 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:11.548 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:35:11.549 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:35:11.549 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:35:11.549 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:35:11.549 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:35:11.549 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:11.549 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:11.549 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:35:11.618 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/index.html - - - 200 - text/html;charset=utf-8 76.6325ms
+2023-01-03 15:35:11.634 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - -
+2023-01-03 15:35:11.637 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.4062ms
+2023-01-03 15:35:11.693 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - -
+2023-01-03 15:35:11.695 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:11.695 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:35:11.695 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:11.695 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:35:11.696 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:35:11.696 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:35:11.696 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:35:11.696 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:35:11.696 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:11.696 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:11.696 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:35:11.904 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 210.1042ms
+2023-01-03 15:35:15.282 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:15.285 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:35:19.041 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/abp/Swashbuckle/SetCsrfCookie - -
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:35:19.043 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:19.043 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:19.043 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:35:19.048 +01:00 [INF] Executing endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2023-01-03 15:35:19.061 +01:00 [INF] Route matched with {area = "Abp", action = "SetCsrfCookie", controller = "AbpSwashbuckle", page = ""}. Executing controller action with signature Void SetCsrfCookie() on controller Volo.Abp.Swashbuckle.AbpSwashbuckleController (Volo.Abp.Swashbuckle).
+2023-01-03 15:35:19.101 +01:00 [INF] Executed action Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle) in 36.0774ms
+2023-01-03 15:35:19.101 +01:00 [INF] Executed endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2023-01-03 15:35:19.101 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/abp/Swashbuckle/SetCsrfCookie - - - 204 - - 59.8636ms
+2023-01-03 15:35:19.137 +01:00 [INF] Request starting HTTP/2 GET https://localhost:51905/api/app/sample/roles-names - -
+2023-01-03 15:35:19.138 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessRequestContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:19.138 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferEndpointType.
+2023-01-03 15:35:19.138 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+InferIssuerFromHost.
+2023-01-03 15:35:19.138 +01:00 [DBG] The event OpenIddict.Server.OpenIddictServerEvents+ProcessRequestContext was successfully processed by OpenIddict.Server.AspNetCore.OpenIddictServerAspNetCoreHandlers+ValidateTransportSecurityRequirement.
+2023-01-03 15:35:19.138 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2023-01-03 15:35:19.139 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromAuthorizationHeader.
+2023-01-03 15:35:19.139 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromBodyForm.
+2023-01-03 15:35:19.139 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.AspNetCore.OpenIddictValidationAspNetCoreHandlers+ExtractAccessTokenFromQueryString.
+2023-01-03 15:35:19.139 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was successfully processed by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:19.139 +01:00 [DBG] The event OpenIddict.Validation.OpenIddictValidationEvents+ProcessAuthenticationContext was marked as rejected by OpenIddict.Validation.OpenIddictValidationHandlers+ValidateToken.
+2023-01-03 15:35:19.139 +01:00 [DBG] AuthenticationScheme: OpenIddict.Validation.AspNetCore was not authenticated.
+2023-01-03 15:35:19.139 +01:00 [INF] Executing endpoint 'CSP.Services.SampleAppService.GetAllRolesNames (CSP.Application)'
+2023-01-03 15:35:19.143 +01:00 [INF] Route matched with {action = "GetAllRolesNames", controller = "Sample", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[System.Collections.Generic.IEnumerable`1[System.String]] GetAllRolesNames() on controller CSP.Services.SampleAppService (CSP.Application).
+2023-01-03 15:35:21.639 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:21.641 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:35:26.287 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'CSPDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:26.307 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ConcurrencyStamp], [a].[ExtraProperties], [a].[IsDefault], [a].[IsPublic], [a].[IsStatic], [a].[Name], [a].[NormalizedName], [a].[TenantId]
+FROM [AbpRoles] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)
+2023-01-03 15:35:30.747 +01:00 [INF] Entity Framework Core 6.0.5 initialized 'BackgroundJobsDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: QuerySplittingBehavior=SplitQuery 
+2023-01-03 15:35:30.749 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[ExtraProperties], [a].[IsAbandoned], [a].[JobArgs], [a].[JobName], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+2023-01-03 15:35:30.776 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-01-03 15:35:30.781 +01:00 [INF] Executed action CSP.Services.SampleAppService.GetAllRolesNames (CSP.Application) in 11637.4436ms
+2023-01-03 15:35:30.781 +01:00 [INF] Executed endpoint 'CSP.Services.SampleAppService.GetAllRolesNames (CSP.Application)'
+2023-01-03 15:35:30.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:51905/api/app/sample/roles-names - - - 200 - application/json;+charset=utf-8 11645.0012ms

@@ -1,4 +1,5 @@
 ﻿using CSP.Books;
+using CSP.EntityFrameworkCore;
 using CSP.MobileWebGate;
 using CSP.Users;
 using CSP.WebGate;
@@ -10,7 +11,7 @@ namespace CSP.MainApp;
 
 [DependsOn(typeof(AbpAutofacModule),
 		   typeof(WebGateModule),
-		  // typeof(AspWebGateModule),
+		   typeof(CSPEntityFrameworkCoreModule),
 		   typeof(MobileWebGateModule),
 		   typeof(UsersModule), 
 		   typeof(BookModule)
