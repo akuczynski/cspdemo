@@ -27,8 +27,9 @@ else
 	<EditForm Model="@userModel" OnValidSubmit="@HandleValidSubmit">
 		<InputText id="firstName" @bind-Value="userModel.FirstName" />
 		<InputText id="lastName" @bind-Value="userModel.LastName" />
-
-		<button type="submit">Submit</button>
+	
+		<br/>
+		<button type="submit">Add</button>
 	</EditForm>
 
 	<table class="table">
@@ -58,6 +59,7 @@ else
 	private User userModel = new User();
 
 	public record AddUserCommand(string FirstName, string LastName);
+	public record DeleteUserCommand(long UserId);
 
 
 	protected override async Task OnInitializedAsync()
@@ -70,7 +72,7 @@ else
 	private async Task HandleValidSubmit()
 	{
 		var addUserCommand = new AddUserCommand(userModel.FirstName, userModel.LastName);
-		var jsonObject = System.Text.Json.JsonSerializer.Serialize(@addUserCommand); //.Serialize(addUserCommand);
+		var jsonObject = System.Text.Json.JsonSerializer.Serialize(@addUserCommand);  
 
 		var result = _commandInvoker.Invoke("addUser", jsonObject);
 		_navigationManager.NavigateTo("users2", true);
@@ -78,15 +80,10 @@ else
 
 	private async void OnDeleteClicked(User user)
 	{
-		//using var client = new HttpClient();
+		var deleteUserCommand = new DeleteUserCommand(user.Id);
+		var jsonObject = System.Text.Json.JsonSerializer.Serialize(@deleteUserCommand);  
 
-		//client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-		//var url = $"http://localhost:8080/users/{Convert.ToInt64(user.Id)}";
-
-		//var response = await client.DeleteAsync(url); 
-		//if (response.IsSuccessStatusCode)
-		//{
-		//	_navigationManager.NavigateTo("users", true);
-		//} 
+		var result = _commandInvoker.Invoke("deleteUser", jsonObject);
+		_navigationManager.NavigateTo("users2", true);
 	}
 }

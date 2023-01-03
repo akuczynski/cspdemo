@@ -53,6 +53,7 @@ namespace CSP.Users
 		public override void ConfigureServices(ServiceConfigurationContext context)
 		{
 			context.Services.AddTransient<ICommandHandler<AddUserCommand>, AddUserHandler>();
+			context.Services.AddTransient<ICommandHandler<DeleteUserCommand>, DeleteUserHandler>();
 			context.Services.AddTransient<IQueryHandler<GetAllUsersQuery>, GetAllUsersQueryHandler>();
 		}
 	}

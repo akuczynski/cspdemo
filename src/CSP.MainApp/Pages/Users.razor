@@ -22,7 +22,8 @@ else
 		<InputText id="firstName" @bind-Value="userModel.FirstName" />
 		<InputText id="lastName" @bind-Value="userModel.LastName" />
 
-		<button type="submit">Submit</button>
+		<br />
+		<button type="submit">Add</button>
 	</EditForm>
 
 	<table class="table">
@@ -74,7 +75,7 @@ else
 		var parameters = new Dictionary<string, string> { { "firstName", userModel.FirstName }, { "lastName", userModel.LastName } };
 		var encodedContent = new FormUrlEncodedContent(parameters);
 
-		var response = await client.PutAsync(url, encodedContent).ConfigureAwait(false); 
+		var response = await client.PutAsync(url, encodedContent); 
 		if (response.StatusCode == HttpStatusCode.OK)
 		{
 			_navigationManager.NavigateTo("users", true);

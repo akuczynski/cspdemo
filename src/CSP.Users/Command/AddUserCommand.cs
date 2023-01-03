@@ -13,12 +13,6 @@ namespace CSP.Users.Command
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }
-
-		public void AddCommand(string firstName, string lastName)
-		{
-			FirstName = firstName;
-			LastName = lastName;
-		}
 	}	
 
 	// TODO: use attribute for serializer registration  
