@@ -8,6 +8,8 @@ namespace CSP.ModuleContracts
 {
     public interface IHostService
     {
-        Task RunAsync();
+        public string Name { get; }
+
+		Task RunAsync();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using CSP.ASPWebGate;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -28,29 +30,38 @@ public class Program
 
         try
         {
-            Log.Information("Starting console host.");
+			//         Log.Information("Starting console host.");
 
-            var builder = Host.CreateDefaultBuilder(args);
-			var appDir = AppDomain.CurrentDomain.BaseDirectory;
-            var pluginsFolder = Path.Combine(appDir, "Modules");
+			//         var builder = Host.CreateDefaultBuilder(args);
+			//var appDir = AppDomain.CurrentDomain.BaseDirectory;
+			//       //  var pluginsFolder = Path.Combine(appDir, "Modules");
 
-			builder.ConfigureServices(services =>
-            {
-                services.AddHostedService<MyConsoleAppHostedService>();
-                services.AddApplicationAsync<MyConsoleAppModule>(options =>
-                {
-                    options.Services.ReplaceConfiguration(services.GetConfiguration());
-                    options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
-					options.PlugInSources.AddFolder(pluginsFolder);
-				});
-            }).UseAutofac().UseConsoleLifetime();
+			//builder.ConfigureServices(services =>
+			//         {
+			//             services.AddHostedService<MyConsoleAppHostedService>();
+			//             services.AddApplicationAsync<MyConsoleAppModule>(options =>
+			//             {
+			//                 options.Services.ReplaceConfiguration(services.GetConfiguration());
+			//                 options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
+			////		options.PlugInSources.AddFolder(pluginsFolder);
+			//	});
+			//         }).UseAutofac().UseConsoleLifetime();
 
-         	var host = builder.Build();
-            await host.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().InitializeAsync(host.Services);
+			//      	var host = builder.Build();
+			//         await host.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().InitializeAsync(host.Services);
 
-            await host.RunAsync();
+			//         await host.RunAsync();
 
-            return 0;
+			Log.Information("Starting web host.");
+			var builder = WebApplication.CreateBuilder(args);
+			builder.Host.AddAppSettingsSecretsJson()
+				.UseAutofac()
+				.UseSerilog();
+			await builder.AddApplicationAsync<AspWebGateModule>();
+			var app = builder.Build();
+			await app.InitializeApplicationAsync();
+			await app.RunAsync();
+			return 0;
         }
         catch (Exception ex)
         {

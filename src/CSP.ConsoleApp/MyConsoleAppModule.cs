@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using CSP.WebGate;
+using CSP.ASPWebGate;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +12,7 @@ namespace Acme.MyConsoleApp;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(WebGateModule)
+    typeof(AspWebGateModule)
 )]
 public class MyConsoleAppModule : AbpModule
 {
