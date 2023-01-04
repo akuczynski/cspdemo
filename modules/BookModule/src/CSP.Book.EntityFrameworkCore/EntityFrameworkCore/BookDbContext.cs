@@ -11,6 +11,8 @@ public class BookDbContext : AbpDbContext<BookDbContext>, IBookDbContext
      * public DbSet<Question> Questions { get; set; }
      */
 
+    public DbSet<Book>  Books { get; set; }
+
     public BookDbContext(DbContextOptions<BookDbContext> options)
         : base(options)
     {

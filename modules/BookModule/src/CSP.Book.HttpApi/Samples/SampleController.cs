@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
+using Volo.Abp.Application.Dtos;
 
 namespace CSP.Book.Samples;
 
@@ -18,7 +19,7 @@ public class SampleController : BookController, ISampleAppService
     }
 
     [HttpGet]
-    public async Task<SampleDto> GetAsync()
+    public async Task<ListResultDto<BookDto>> GetAsync()
     {
         return await _sampleAppService.GetAsync();
     }
@@ -26,7 +27,7 @@ public class SampleController : BookController, ISampleAppService
     [HttpGet]
     [Route("authorized")]
     [Authorize]
-    public async Task<SampleDto> GetAuthorizedAsync()
+    public async Task<ListResultDto<BookDto>> GetAuthorizedAsync()
     {
         return await _sampleAppService.GetAsync();
     }

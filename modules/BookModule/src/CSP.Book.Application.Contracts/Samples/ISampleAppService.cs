@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
 namespace CSP.Book.Samples;
 
 public interface ISampleAppService : IApplicationService
 {
-    Task<SampleDto> GetAsync();
+	Task<ListResultDto<BookDto>> GetAsync();
 
-    Task<SampleDto> GetAuthorizedAsync();
+	Task<ListResultDto<BookDto>> GetAuthorizedAsync();
 }

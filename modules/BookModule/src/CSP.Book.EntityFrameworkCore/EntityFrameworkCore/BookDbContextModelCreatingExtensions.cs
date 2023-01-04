@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace CSP.Book.EntityFrameworkCore;
 
@@ -9,6 +10,14 @@ public static class BookDbContextModelCreatingExtensions
         this ModelBuilder builder)
     {
         Check.NotNull(builder, nameof(builder));
+
+        builder.Entity<Book>(b =>
+        {
+			//Configure table & schema name
+			b.ToTable("Books", BookDbProperties.DbSchema);
+
+			b.ConfigureByConvention();
+		});
 
         /* Configure all entities here. Example:
 
