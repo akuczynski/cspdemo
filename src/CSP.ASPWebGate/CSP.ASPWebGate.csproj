@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CSP.Application.Contracts\CSP.Application.Contracts.csproj" />
     <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
-    <ProjectReference Include="..\CSP.Database\CSP.Database.csproj" />
     <ProjectReference Include="..\CSP.Domain.Shared\CSP.Domain.Shared.csproj" />
     <ProjectReference Include="..\CSP.Domain\CSP.Domain.csproj" />
     <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />

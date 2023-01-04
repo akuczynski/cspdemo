@@ -104,10 +104,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
 	  <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\CSP.MobileWebGate\CSP.MobileWebGate.csproj" />
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
-	  <ProjectReference Include="..\CSP.Users\CSP.Users.csproj" />
-	  <ProjectReference Include="..\CSP.WebGate\CSP.WebGate.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
