@@ -17,7 +17,7 @@ public class CSPDbContextFactory : IDesignTimeDbContextFactory<CSPDbContext>
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<CSPDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+            .UseSqlite(configuration.GetConnectionString("Default"));
 
         return new CSPDbContext(builder.Options);
     }

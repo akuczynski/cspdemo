@@ -59,8 +59,7 @@ public class CSPDbContext :
     public CSPDbContext(DbContextOptions<CSPDbContext> options)
         : base(options)
     {
-
-    }
+	}
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

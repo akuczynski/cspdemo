@@ -7,6 +7,7 @@ using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
 using CSP.ModuleContracts;
 using Microsoft.Maui.Controls.PlatformConfiguration;
+using CSP.Data;
 
 namespace CSP.MainApp;
 
@@ -48,6 +49,10 @@ public static class MauiProgram
         var app = builder.Build();
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
+
+		//app.Services
+		//   .GetRequiredService<CSPDbMigrationService>()
+		//   .MigrateAsync();
 
 		return app;
 	}
