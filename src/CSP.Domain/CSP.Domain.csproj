@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSP.Domain.Shared\CSP.Domain.Shared.csproj" />
+	<!-- add references to modules -->
+	<ProjectReference Include="..\..\modules\BookModule\src\CSP.Book.Domain\CSP.Book.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

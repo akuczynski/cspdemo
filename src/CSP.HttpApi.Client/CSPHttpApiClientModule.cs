@@ -7,6 +7,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
+using CSP.Book;
 
 namespace CSP;
 
@@ -17,7 +18,8 @@ namespace CSP;
     typeof(AbpPermissionManagementHttpApiClientModule),
     typeof(AbpTenantManagementHttpApiClientModule),
     typeof(AbpFeatureManagementHttpApiClientModule),
-    typeof(AbpSettingManagementHttpApiClientModule)
+    typeof(AbpSettingManagementHttpApiClientModule),
+    typeof(BookHttpApiClientModule)
 )]
 public class CSPHttpApiClientModule : AbpModule
 {

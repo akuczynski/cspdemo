@@ -1,6 +1,6 @@
 ﻿@page "/books"
 
-@using CSP.Books.Services;
+@*@using CSP.Books.Services;
 @using CSP.ModuleContracts
 
 @inject IBookAppService bookService
@@ -15,8 +15,8 @@
 	<p><em>Loading...</em></p>
 }
 else
-{
-	<table class="table">
+{*@
+@*	<table class="table">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -32,15 +32,15 @@ else
 				</tr>
 			}
 		</tbody>
-	</table>
+	</table>*@
 }
 
 @code {
-	private IEnumerable<Book> books;
+	//private IEnumerable<Book> books;
 
-	protected override async Task OnInitializedAsync()
-	{
-		var roles = await sampleService.GetAllRolesNames(); 
-		books = await bookService.GetBooks(1, 10);
-	}
+	//protected override async Task OnInitializedAsync()
+	//{
+	//	var roles = await sampleService.GetAllRolesNames(); 
+	//	books = await bookService.GetBooks(1, 10);
+	//}
 }

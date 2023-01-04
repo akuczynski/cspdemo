@@ -9,6 +9,7 @@ using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.AspNetCore.Mvc;
+using CSP.Book;
 //using CSP.Books;
 
 namespace CSP;
@@ -19,9 +20,9 @@ namespace CSP;
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule)
-  //  typeof(BookModule)
-    )]
+    typeof(AbpSettingManagementHttpApiModule),
+	typeof(BookHttpApiModule)
+	)]
 public class CSPHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

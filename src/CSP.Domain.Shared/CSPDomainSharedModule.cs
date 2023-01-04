@@ -1,4 +1,5 @@
-﻿using CSP.Localization;
+﻿using CSP.Book;
+using CSP.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -23,7 +24,8 @@ namespace CSP;
     typeof(AbpOpenIddictDomainSharedModule),
     typeof(AbpPermissionManagementDomainSharedModule),
     typeof(AbpSettingManagementDomainSharedModule),
-    typeof(AbpTenantManagementDomainSharedModule)    
+    typeof(AbpTenantManagementDomainSharedModule),
+    typeof(BookDomainSharedModule)
     )]
 public class CSPDomainSharedModule : AbpModule
 {

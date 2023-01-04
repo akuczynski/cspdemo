@@ -12,6 +12,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using CSP.Book.EntityFrameworkCore;
 
 namespace CSP.EntityFrameworkCore;
 
@@ -25,7 +26,8 @@ namespace CSP.EntityFrameworkCore;
     typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpTenantManagementEntityFrameworkCoreModule),
-    typeof(AbpFeatureManagementEntityFrameworkCoreModule)
+    typeof(AbpFeatureManagementEntityFrameworkCoreModule),
+    typeof(BookEntityFrameworkCoreModule)
     )]
 public class CSPEntityFrameworkCoreModule : AbpModule
 {
