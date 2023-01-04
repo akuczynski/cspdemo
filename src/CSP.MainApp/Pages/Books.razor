@@ -1,10 +1,11 @@
 ﻿@page "/books"
-
-@*@using CSP.Books.Services;
+ 
+@using CSP.Book;
 @using CSP.ModuleContracts
+@using CSP.Book.Samples;
+@using Volo.Abp.Application.Dtos;
 
-@inject IBookAppService bookService
-@inject ISampleAppService sampleService
+@inject ISampleAppService bookService
 
 <h1>Book example</h1>
 
@@ -15,8 +16,8 @@
 	<p><em>Loading...</em></p>
 }
 else
-{*@
-@*	<table class="table">
+{
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -24,23 +25,22 @@ else
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var book in books)
+			@foreach (var book in books.Items)
 			{
 				<tr>
-					<td>@book.ID</td>
+					<td>@book.Id</td>
 					<td>@book.Title</td>
 				</tr>
 			}
 		</tbody>
-	</table>*@
+	</table>
 }
 
 @code {
-	//private IEnumerable<Book> books;
+	private ListResultDto<BookDto> books;
 
-	//protected override async Task OnInitializedAsync()
-	//{
-	//	var roles = await sampleService.GetAllRolesNames(); 
-	//	books = await bookService.GetBooks(1, 10);
-	//}
+	protected override async Task OnInitializedAsync()
+	{
+		books = await bookService.GetAsync();
+	}
 }

@@ -7,8 +7,8 @@ using Volo.Abp.Modularity;
 namespace CSP.MainApp;
 
 [DependsOn(typeof(AbpAutofacModule),
-		   typeof(CSPEntityFrameworkCoreModule)
-	//	   typeof(BookModule)
+		   typeof(CSPEntityFrameworkCoreModule),	
+	 	   typeof(CSPApplicationModule)
 	)]
 public class MainAppModule : AbpModule
 {
