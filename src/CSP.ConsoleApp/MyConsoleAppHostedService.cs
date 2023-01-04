@@ -28,22 +28,7 @@ public class MyConsoleAppHostedService :  IHostedService
 	}
 
 	public async Task StartAsync(CancellationToken cancellationToken)
-	{
-		//Log.Information("Starting web host.");
-		//var builder = WebApplication.CreateBuilder();
-		//builder.Host.AddAppSettingsSecretsJson()
-		//	.UseAutofac()
-		//	.UseSerilog();
-
-		//await builder.AddApplicationAsync<AspWebGateModule>(options =>
-		//{
-		//	 //	options.PlugInSources.AddFolder(pluginsFolder);
-		//});
-
-		//var app = builder.Build();
-	
-	 //   await app.InitializeApplicationAsync();
-	 //   await app.RunAsync();
+	{ 
 	}
 
 	public async Task StopAsync(CancellationToken cancellationToken)

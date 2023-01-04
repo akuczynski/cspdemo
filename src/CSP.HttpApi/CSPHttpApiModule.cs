@@ -19,7 +19,8 @@ namespace CSP;
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule)
+    typeof(AbpSettingManagementHttpApiModule),
+    typeof(BookModule)
     )]
 public class CSPHttpApiModule : AbpModule
 {
