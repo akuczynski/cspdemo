@@ -14,9 +14,13 @@ public class BookEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<BookDbContext>(options =>
         {
-                /* Add custom repositories here. Example:
-                 * options.AddRepository<Question, EfCoreQuestionRepository>();
-                 */
-        });
+			/* Add custom repositories here. Example:
+			 * options.AddRepository<Question, EfCoreQuestionRepository>();
+			 */
+
+			/* Remove "includeAllEntities: true" to create
+             * default repositories only for aggregate roots */
+			options.AddDefaultRepositories(includeAllEntities: true);
+		});
     }
 }
