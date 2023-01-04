@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CSP.ASPWebGate;
-using CSP.Books;
 using CSP.ModuleContracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;

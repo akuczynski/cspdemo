@@ -102,7 +102,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\CSP.Books\CSP.Books.csproj" />
 	  <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />
 	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	</ItemGroup>

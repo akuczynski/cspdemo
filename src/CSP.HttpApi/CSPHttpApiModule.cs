@@ -9,7 +9,7 @@ using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.AspNetCore.Mvc;
-using CSP.Books;
+//using CSP.Books;
 
 namespace CSP;
 [DependsOn(
@@ -19,8 +19,8 @@ namespace CSP;
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule),
-    typeof(BookModule)
+    typeof(AbpSettingManagementHttpApiModule)
+  //  typeof(BookModule)
     )]
 public class CSPHttpApiModule : AbpModule
 {
@@ -44,9 +44,9 @@ public class CSPHttpApiModule : AbpModule
 
 	private void ConfigureAutoApiControllers()
 	{
-		Configure<AbpAspNetCoreMvcOptions>(options =>
-		{
-			options.ConventionalControllers.Create(typeof(BookModule).Assembly);
-		});
+		//Configure<AbpAspNetCoreMvcOptions>(options =>
+		//{
+		//	options.ConventionalControllers.Create(typeof(BookModule).Assembly);
+		//});
 	}
 }
