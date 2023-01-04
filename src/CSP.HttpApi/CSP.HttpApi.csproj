@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSP.Application.Contracts\CSP.Application.Contracts.csproj" />
+	 <!-- add reference to modules -->
+	 <ProjectReference Include="..\..\modules\BookModule\src\CSP.Book.HttpApi\CSP.Book.HttpApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

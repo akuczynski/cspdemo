@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44398",
-      "sslPort": 44398
+      "applicationUrl": "https://localhost:44399",
+      "sslPort": 44399
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "CSP.Book.DemoApp": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44398",
+      "applicationUrl": "https://localhost:44399",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
