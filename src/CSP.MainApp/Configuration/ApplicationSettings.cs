@@ -1,4 +1,4 @@
-﻿using CSP.ModuleContracts;
+﻿using CSP.Core;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,13 +12,23 @@ namespace CSP.MainApp
 {
     public class ApplicationSettings : IApplicationSettings, ISingletonDependency
 	{
-        public ApplicationSettings(IConfiguration configuration) {
-            DatabaseFilename = configuration.GetValue<string>("DatabaseFilename");
-        }    
+		public const string DatabaseFilename = "CPS2SQLiteDBFile.db3";
 
-        public string DatabaseFilename { get; init; }
-         
-        public string DatabasePath =>
-            Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
-    }
+		public const SQLite.SQLiteOpenFlags Flags =
+			// open the database in read/write mode
+			SQLite.SQLiteOpenFlags.ReadWrite |
+			// create the database if it doesn't exist
+			SQLite.SQLiteOpenFlags.Create |
+			// enable multi-threaded database access
+			SQLite.SQLiteOpenFlags.SharedCache;
+
+		public string DatabaseFilePath
+		{
+			get
+			{
+				var basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+				return Path.Combine(basePath, DatabaseFilename);
+			}
+		} 
+	}
 }

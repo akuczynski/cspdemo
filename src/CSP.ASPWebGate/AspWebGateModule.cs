@@ -25,6 +25,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+using CSP.Core;
+using CSP.Data;
 
 namespace CSP.ASPWebGate
 {
@@ -160,7 +162,7 @@ namespace CSP.ASPWebGate
 			});
 		}
 
-		public override void OnApplicationInitialization(ApplicationInitializationContext context)
+		public override async void OnApplicationInitialization(ApplicationInitializationContext context)
 		{
 			var env = context.GetEnvironment();
 			var app = context.GetApplicationBuilder();
@@ -189,6 +191,10 @@ namespace CSP.ASPWebGate
 				app.UseMultiTenancy();
 			}
 
+			
+			//TODO: remove this from production code 
+			await ApplyMigrations(context); 
+
 			app.UseUnitOfWork();
 			app.UseAuthorization();
 			app.UseSwagger();
@@ -197,6 +203,14 @@ namespace CSP.ASPWebGate
 				options.SwaggerEndpoint("/swagger/v1/swagger.json", "CSP API");
 			});
 			app.UseConfiguredEndpoints();
+		}
+
+		private async Task ApplyMigrations(ApplicationInitializationContext context)
+		{
+			var appSettings = context.ServiceProvider.GetRequiredService<IApplicationSettings>();
+
+			var migrationService = context.ServiceProvider.GetService<CSPDbMigrationService>();
+			await migrationService.MigrateAsync();
 		}
 	}
 }

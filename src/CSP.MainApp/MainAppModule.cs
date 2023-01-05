@@ -1,4 +1,5 @@
 ﻿//using CSP.Books;
+using CSP.Core;
 using CSP.Data;
 using CSP.EntityFrameworkCore;
 using Volo.Abp;
@@ -16,6 +17,7 @@ public class MainAppModule : AbpModule
 {
 	public override void ConfigureServices(ServiceConfigurationContext context)
 	{
+	
 		Configure<AbpAuditingOptions>(options =>
 		{
 			options.IsEnabled = false; //Disables the auditing system
@@ -26,8 +28,15 @@ public class MainAppModule : AbpModule
 	{
 		base.OnApplicationInitialization(context);
 
-		// TODO: add some code to check if migration wasn't run before 
+		// apply db migrations (on production this should be avoided) 
+		await ApplyMigrations(context); 
+	}
+
+	private async Task ApplyMigrations(ApplicationInitializationContext context)
+	{
+		var appSettings = context.ServiceProvider.GetRequiredService<IApplicationSettings>();
+
 		var migrationService = context.ServiceProvider.GetService<CSPDbMigrationService>();
 		await migrationService.MigrateAsync();
-	}
+	} 
 }

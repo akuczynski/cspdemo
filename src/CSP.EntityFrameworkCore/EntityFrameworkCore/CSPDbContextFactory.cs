@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CSP.ModuleContracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -10,14 +11,22 @@ namespace CSP.EntityFrameworkCore;
  * (like Add-Migration and Update-Database commands) */
 public class CSPDbContextFactory : IDesignTimeDbContextFactory<CSPDbContext>
 {
-    public CSPDbContext CreateDbContext(string[] args)
+    private string _appDataDir;
+
+    public CSPDbContextFactory(IApplicationSettings applicationSettings)
+    {
+        _appDataDir = applicationSettings.AppDataDirectory;
+    }
+	public CSPDbContext CreateDbContext(string[] args)
     {
         CSPEfCoreEntityExtensionMappings.Configure();
 
         var configuration = BuildConfiguration();
 
-        var builder = new DbContextOptionsBuilder<CSPDbContext>()
-            .UseSqlite(configuration.GetConnectionString("Default"));
+		string dbPath = Path.Combine(_appDataDir, "CPS2SQLiteDBFile.db3");
+
+		var builder = new DbContextOptionsBuilder<CSPDbContext>()
+            .UseSqlite($"Filename={dbPath}");
 
         return new CSPDbContext(builder.Options);
     }

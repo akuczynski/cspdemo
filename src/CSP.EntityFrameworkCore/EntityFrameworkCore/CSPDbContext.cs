@@ -59,6 +59,8 @@ public class CSPDbContext :
     public CSPDbContext(DbContextOptions<CSPDbContext> options)
         : base(options)
     {
+		// this is needed to initiate SQLite on iOS.
+		SQLitePCL.Batteries_V2.Init();
 	}
 
     protected override void OnModelCreating(ModelBuilder builder)

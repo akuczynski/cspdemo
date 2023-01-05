@@ -2,6 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using CSP.ASPWebGate;
+using CSP.Core;
+using CSP.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,6 +52,7 @@ public class Program
 			var app = builder.Build();
 
             await app.InitializeApplicationAsync();
+      
             await app.RunAsync();
             return 0; 
         }

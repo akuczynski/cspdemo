@@ -50,10 +50,6 @@ public static class MauiProgram
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 
-		//app.Services
-		//   .GetRequiredService<CSPDbMigrationService>()
-		//   .MigrateAsync();
-
 		return app;
 	}
 

@@ -13,6 +13,12 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using CSP.Book.EntityFrameworkCore;
+using System.IO;
+using Volo.Abp.Data;
+using CSP.ModuleContracts;
+using System.Runtime;
+using Volo.Abp;
+using CSP.Core; 
 
 namespace CSP.EntityFrameworkCore;
 
@@ -38,19 +44,27 @@ public class CSPEntityFrameworkCoreModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddAbpDbContext<CSPDbContext>(options =>
+		var appSettings = context.Services.GetRequiredServiceLazy<IApplicationSettings>();
+
+		Configure<AbpDbConnectionOptions>(options =>
+		{
+            // this is required to make app working on different OS 
+			options.ConnectionStrings.Default = $"DataSource={appSettings.Value.DatabaseFilePath}";
+		});
+
+		context.Services.AddAbpDbContext<CSPDbContext>(options =>
         {
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 
-        Configure<AbpDbContextOptions>(options =>
+		Configure<AbpDbContextOptions>(options =>
         {
-                /* The main point to change your DBMS.
-                 * See also CSPMigrationsDbContextFactory for EF Core tooling. */
-            options.UseSqlite();            
+            /* The main point to change your DBMS.
+             * See also CSPMigrationsDbContextFactory for EF Core tooling. */
+             
+            options.UseSqlite();
         });
-
-    }
+    } 
 }
