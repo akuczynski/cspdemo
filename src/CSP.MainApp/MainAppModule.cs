@@ -2,6 +2,7 @@
 using CSP.Core;
 using CSP.Data;
 using CSP.EntityFrameworkCore;
+using CSP.Users;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
@@ -11,7 +12,8 @@ namespace CSP.MainApp;
 
 [DependsOn(typeof(AbpAutofacModule),
 		   typeof(CSPEntityFrameworkCoreModule),	
-	 	   typeof(CSPApplicationModule)
+	 	   typeof(CSPApplicationModule),
+		   typeof(UsersModule)
 	)]
 public class MainAppModule : AbpModule
 {
@@ -27,9 +29,14 @@ public class MainAppModule : AbpModule
 	public override async void OnApplicationInitialization(ApplicationInitializationContext context)
 	{
 		base.OnApplicationInitialization(context);
+	}
 
+	public override async Task OnPostApplicationInitializationAsync(ApplicationInitializationContext context)
+	{
 		// apply db migrations (on production this should be avoided) 
-		await ApplyMigrations(context); 
+		await base.OnPostApplicationInitializationAsync(context);
+
+		await ApplyMigrations(context);
 	}
 
 	private async Task ApplyMigrations(ApplicationInitializationContext context)
