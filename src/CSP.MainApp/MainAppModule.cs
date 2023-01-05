@@ -2,7 +2,6 @@
 using CSP.Core;
 using CSP.Data;
 using CSP.EntityFrameworkCore;
-using CSP.Users;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
@@ -12,8 +11,7 @@ namespace CSP.MainApp;
 
 [DependsOn(typeof(AbpAutofacModule),
 		   typeof(CSPEntityFrameworkCoreModule),	
-	 	   typeof(CSPApplicationModule),
-		   typeof(UsersModule)
+	 	   typeof(CSPApplicationModule)
 	)]
 public class MainAppModule : AbpModule
 {
