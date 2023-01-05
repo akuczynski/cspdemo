@@ -28,7 +28,7 @@ public class MainAppModule : AbpModule
 	{
 		base.OnApplicationInitialization(context);
 
-		await ApplyMigrations(context);
+	 	await ApplyMigrations(context);
 	} 
 
 	private async Task ApplyMigrations(ApplicationInitializationContext context)

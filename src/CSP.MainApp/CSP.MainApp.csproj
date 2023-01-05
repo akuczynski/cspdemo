@@ -11,7 +11,7 @@
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
-		<!--<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>-->
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk> 
 		
         <!-- Display name -->
         <ApplicationTitle>CSP.MainApp</ApplicationTitle>
