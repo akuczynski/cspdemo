@@ -27,15 +27,9 @@ public class MainAppModule : AbpModule
 	public override async void OnApplicationInitialization(ApplicationInitializationContext context)
 	{
 		base.OnApplicationInitialization(context);
-	}
-
-	public override async Task OnPostApplicationInitializationAsync(ApplicationInitializationContext context)
-	{
-		// apply db migrations (on production this should be avoided) 
-		await base.OnPostApplicationInitializationAsync(context);
 
 		await ApplyMigrations(context);
-	}
+	} 
 
 	private async Task ApplyMigrations(ApplicationInitializationContext context)
 	{

@@ -5,6 +5,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>CSP</RootNamespace>
+	<Platforms>AnyCPU;ARM64;x64</Platforms>
   </PropertyGroup>
 
 	<ItemGroup>

@@ -47,11 +47,11 @@
 		<AndroidSigningStorePass>cspdemo</AndroidSigningStorePass>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(RunConfiguration)'=='Default'">
+	<!--<PropertyGroup Condition="'$(RunConfiguration)'=='Default'">
 	  <EnvironmentVariables>
 			<Variable name="DOTNET_DiagnosticPorts" value="myapp.sock" />
 		</EnvironmentVariables>
-	</PropertyGroup>
+	</PropertyGroup>-->
 	
 	<ItemGroup>
 		<PackageReference Include="NodaTime.Serialization.JsonNet" Version="3.0.1" />

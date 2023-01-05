@@ -6,6 +6,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>CSP</RootNamespace>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	<Platforms>AnyCPU;ARM64;x64</Platforms>
   </PropertyGroup>
 
 
