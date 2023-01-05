@@ -13,22 +13,19 @@ public class CSPDbContextFactory : IDesignTimeDbContextFactory<CSPDbContext>
 {
     private string _appDataDir;
 
-    public CSPDbContextFactory(IApplicationSettings applicationSettings)
+    public CSPDbContextFactory()
     {
-        _appDataDir = applicationSettings.AppDataDirectory;
     }
 	public CSPDbContext CreateDbContext(string[] args)
     {
         CSPEfCoreEntityExtensionMappings.Configure();
 
-        var configuration = BuildConfiguration();
-
-		string dbPath = Path.Combine(_appDataDir, "CPS2SQLiteDBFile.db3");
+		var configuration = BuildConfiguration();
 
 		var builder = new DbContextOptionsBuilder<CSPDbContext>()
-            .UseSqlite($"Filename={dbPath}");
+			.UseSqlite(configuration.GetConnectionString("Default"));
 
-        return new CSPDbContext(builder.Options);
+		return new CSPDbContext(builder.Options);
     }
 
     private static IConfigurationRoot BuildConfiguration()

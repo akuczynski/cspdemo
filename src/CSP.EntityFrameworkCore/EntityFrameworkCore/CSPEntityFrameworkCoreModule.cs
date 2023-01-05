@@ -49,7 +49,10 @@ public class CSPEntityFrameworkCoreModule : AbpModule
 		Configure<AbpDbConnectionOptions>(options =>
 		{
             // this is required to make app working on different OS 
-			options.ConnectionStrings.Default = $"DataSource={appSettings.Value.DatabaseFilePath}";
+            if (appSettings.Value.DatabaseFilePath != null)
+            {
+                options.ConnectionStrings.Default = $"DataSource={appSettings.Value.DatabaseFilePath}";
+            }
 		});
 
 		context.Services.AddAbpDbContext<CSPDbContext>(options =>

@@ -7,10 +7,6 @@
     <RootNamespace>CSP</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="EntityFrameworkCore\CSPDbContextFactory.cs" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<!-- add references to modules -->
 		<ProjectReference Include="..\..\modules\BookModule\src\CSP.Book.EntityFrameworkCore\CSP.Book.EntityFrameworkCore.csproj" />
