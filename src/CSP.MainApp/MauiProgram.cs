@@ -8,6 +8,7 @@ using Volo.Abp.Modularity.PlugIns;
 using CSP.ModuleContracts;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using CSP.Data;
+using Plugin.LocalNotification;
 
 namespace CSP.MainApp;
 
@@ -24,7 +25,11 @@ public static class MauiProgram
 			})
             .ConfigureContainer(new AbpAutofacServiceProviderFactory(new Autofac.ContainerBuilder()));
 
-        ConfigureConfiguration(builder);
+#if ANDROID
+		LocalNotificationExtensions.UseLocalNotification(builder);
+#endif
+
+		ConfigureConfiguration(builder);
 
  #if ANDROID
 		var appDir = FileSystem.Current.AppDataDirectory;
