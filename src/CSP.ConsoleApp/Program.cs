@@ -41,7 +41,7 @@ public class Program
                 {
                     options.Services.ReplaceConfiguration(services.GetConfiguration());
                     options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
-					options.PlugInSources.AddFolder(pluginsFolder);
+				 	options.PlugInSources.AddFolder(pluginsFolder);
 				});
             }).UseAutofac().UseConsoleLifetime();
 

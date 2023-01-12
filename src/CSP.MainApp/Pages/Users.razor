@@ -76,7 +76,7 @@ else
 		var encodedContent = new FormUrlEncodedContent(parameters);
 
 		var response = await client.PutAsync(url, encodedContent); 
-		if (response.StatusCode == HttpStatusCode.OK)
+		if (response.IsSuccessStatusCode)
 		{
 			_navigationManager.NavigateTo("users", true);
 		} 

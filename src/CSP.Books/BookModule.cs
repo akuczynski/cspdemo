@@ -4,6 +4,9 @@ using CSP.Database;
 using CSP.ModuleContracts;
 using Microsoft.Extensions.DependencyInjection;
 using CSP.Books.Services;
+using System.Reflection;
+using Volo.Abp.VirtualFileSystem;
+using GenHTTP.Modules.IO;
 
 namespace CSP.Books
 {
@@ -13,7 +16,7 @@ namespace CSP.Books
 		public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
 		{
 			RegisterRoutePaths(context);
-		}
+		} 
 
 		private void RegisterRoutePaths(ApplicationInitializationContext context)
 		{
