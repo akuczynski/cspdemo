@@ -7,27 +7,27 @@
 	<base href="/" />
 	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
 	<link href="css/app.css" rel="stylesheet" />
-	<script src="js/jquery-3.6.3.js" ></script>
+	<script src="js/jquery-3.6.3.js"></script>
 	<link href="CSP.MainApp.styles.css" rel="stylesheet" />
 
-	<script> 
-         
-        netFromJs = {
-            staticCall: function () {
-                let jsonObject = [];
+	<script>
 
-                try {
-                    DotNet
-                        .invokeMethodAsync('CSP.MainApp', 'ExecuteServiceCall', 'CSP.Book.Samples.SampleAppService, CSP.Book.Application', 'GetAsync', jsonObject)
-                        .then(results => {
-                            console.log(results);
-                        });
-                }
-                catch (ex) {
-                    console.log(ex);
-                }
-            }
-        }
+		netFromJs = {
+			staticCall: function () {
+				let jsonObject = [];
+
+				try {
+					DotNet
+						.invokeMethodAsync('CSP.MainApp', 'ExecuteServiceCall', 'CSP.Book.Samples.SampleAppService, CSP.Book.Application', 'GetAsync', jsonObject)
+						.then(results => {
+							console.log(results);
+						});
+				}
+				catch (ex) {
+					console.log(ex);
+				}
+			}
+		}
 
 	</script>
 
@@ -35,9 +35,11 @@
 
 <body>
 
-    <div id="app">JS example.</div>
+	<div id="app">JS example.</div>
 
-    <script src="_framework/blazor.webview.js" autostart="true"></script>
+	<script src="_framework/blazor.webview.js" autostart="false"></script>
+
+
 </body>
 
 </html>
