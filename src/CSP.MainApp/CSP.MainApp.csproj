@@ -90,9 +90,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Javascript\HelloHelper.cs" />
+	  <Compile Remove="Javascript\JsInteropClasses3.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Remove="appsettings.json" />
-	  <Content Remove="Pages\Counter.razor" />
-	  <Content Remove="Pages\FetchData.razor" />
 	</ItemGroup>
 
 	<ItemGroup>

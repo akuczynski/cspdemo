@@ -5,7 +5,6 @@ using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
-using CSP.ModuleContracts;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using CSP.Data;
 using Plugin.LocalNotification;
@@ -14,6 +13,8 @@ namespace CSP.MainApp;
 
 public static class MauiProgram
 {
+	public static IServiceProvider ServiceProvider { get; private set; }
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -24,6 +25,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			})
             .ConfigureContainer(new AbpAutofacServiceProviderFactory(new Autofac.ContainerBuilder()));
+
 
 #if ANDROID
 		LocalNotificationExtensions.UseLocalNotification(builder);
@@ -52,6 +54,7 @@ public static class MauiProgram
 #endif
 
         var app = builder.Build();
+		ServiceProvider = app.Services;
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 

@@ -18,7 +18,6 @@
     <ProjectReference Include="..\CSP.Domain.Shared\CSP.Domain.Shared.csproj" />
     <ProjectReference Include="..\CSP.Domain\CSP.Domain.csproj" />
     <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\CSP.HttpApi.Client\CSP.HttpApi.Client.csproj" />
     <ProjectReference Include="..\CSP.HttpApi\CSP.HttpApi.csproj" />
     <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
   </ItemGroup>

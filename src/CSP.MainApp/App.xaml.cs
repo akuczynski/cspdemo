@@ -1,4 +1,6 @@
-﻿namespace CSP.MainApp;
+﻿using Microsoft.JSInterop;
+
+namespace CSP.MainApp;
 
 public partial class App : Application
 {

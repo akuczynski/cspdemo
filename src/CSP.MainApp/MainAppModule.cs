@@ -2,6 +2,7 @@
 using CSP.Core;
 using CSP.Data;
 using CSP.EntityFrameworkCore;
+using CSP.MainApp.Javascript;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
@@ -27,7 +28,7 @@ public class MainAppModule : AbpModule
 	public override async void OnApplicationInitialization(ApplicationInitializationContext context)
 	{
 		base.OnApplicationInitialization(context);
-
+		 
 	 	await ApplyMigrations(context);
 	} 
 
