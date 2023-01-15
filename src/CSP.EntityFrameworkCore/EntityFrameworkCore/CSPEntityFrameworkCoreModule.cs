@@ -15,10 +15,9 @@ using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using CSP.Book.EntityFrameworkCore;
 using System.IO;
 using Volo.Abp.Data;
-using CSP.ModuleContracts;
 using System.Runtime;
 using Volo.Abp;
-using CSP.Core; 
+using CSP.Settings;
 
 namespace CSP.EntityFrameworkCore;
 
@@ -33,7 +32,8 @@ namespace CSP.EntityFrameworkCore;
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(AbpFeatureManagementEntityFrameworkCoreModule),
-    typeof(BookEntityFrameworkCoreModule)
+    typeof(BookEntityFrameworkCoreModule),
+    typeof(CSPApplicationContractsModule)
     )]
 public class CSPEntityFrameworkCoreModule : AbpModule
 {

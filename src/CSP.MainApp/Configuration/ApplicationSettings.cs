@@ -1,4 +1,4 @@
-﻿using CSP.Core;
+﻿using CSP.Settings;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;

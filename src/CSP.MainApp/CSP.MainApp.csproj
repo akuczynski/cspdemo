@@ -106,7 +106,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
 	  <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

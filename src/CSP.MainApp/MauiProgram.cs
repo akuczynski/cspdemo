@@ -5,7 +5,6 @@ using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
-using CSP.ModuleContracts;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using CSP.Data;
 using Plugin.LocalNotification;

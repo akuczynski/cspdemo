@@ -1,5 +1,5 @@
 ﻿//using CSP.Books;
-using CSP.Core;
+using CSP.Settings;
 using CSP.Data;
 using CSP.EntityFrameworkCore;
 using Volo.Abp;
@@ -33,8 +33,6 @@ public class MainAppModule : AbpModule
 
 	private async Task ApplyMigrations(ApplicationInitializationContext context)
 	{
-		var appSettings = context.ServiceProvider.GetRequiredService<IApplicationSettings>();
-
 		var migrationService = context.ServiceProvider.GetService<CSPDbMigrationService>();
 		await migrationService.MigrateAsync();
 	} 
