@@ -1,0 +1,16 @@
+﻿@page "/jssample"
+@inject IJSRuntime JS
+
+<h1>JS example</h1>
+
+<button class="btn btn-primary" @onclick="CallService" >Call .NET service</button>
+<br />
+<div id="log" class="container-md"/>
+
+@code {
+	public async Task CallService()
+	{		
+		 await JS.InvokeVoidAsync("netFromJs.staticCall", null); 
+	}
+}
+

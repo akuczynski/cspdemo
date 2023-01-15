@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
 	<link href="css/app.css" rel="stylesheet" />
 	<link href="CSP.MainApp.styles.css" rel="stylesheet" />
-
+	<script src="js/jquery-3.6.3.js" />
+ 
 	<script>
 		window.returnArrayAsync = () => {
 			DotNet.invokeMethodAsync('CSP.MainApp', 'ReturnArrayAsync')
@@ -22,6 +23,27 @@
 		window.sayHello1 = (dotNetHelper) => {
 			return dotNetHelper.invokeMethodAsync('GetHelloMessage');
 		};
+
+        netFromJs = {
+            staticCall: function () {
+                let jsonObject = [];
+
+                try {
+                    DotNet
+                        // call .NET Service from Javascript client 	
+                        .invokeMethodAsync('CSP.MainApp', 'ExecuteServiceCall', 'CSP.Book.Samples.SampleAppService, CSP.Book.Application', 'GetAsync', jsonObject)
+                        .then(results => {
+							console.log(results);
+
+							$('#log').empty();
+							$('#log').append(results);
+                        });
+                }
+                catch (ex) {
+                    console.log(ex);
+                }
+            }
+        }
 	</script>
 </head>
 

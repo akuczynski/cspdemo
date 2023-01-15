@@ -14,7 +14,9 @@ namespace CSP.MainApp;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+    public static IServiceProvider ServiceProvider { get; private set; }
+
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -52,6 +54,7 @@ public static class MauiProgram
 #endif
 
         var app = builder.Build();
+        ServiceProvider = app.Services;
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 

@@ -35,7 +35,9 @@
 				}
 			};
 
+		#if ANDROID
 		LocalNotificationCenter.Current.Show(request);
+		#endif
 	} 
 }
 
