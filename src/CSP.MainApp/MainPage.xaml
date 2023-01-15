@@ -5,6 +5,7 @@
              x:Class="CSP.MainApp.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
+     <!-- This could be pointing to the compiled Angular app -->
     <BlazorWebView HostPage="wwwroot/index.html" />
 
 </ContentPage>

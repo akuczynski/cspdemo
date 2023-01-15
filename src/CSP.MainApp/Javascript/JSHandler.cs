@@ -19,18 +19,15 @@ namespace CSP.MainApp.Javascript
 	{ 
 		[JSInvokable]
 		public static async Task<dynamic> ExecuteServiceCall(string serviceName, string methodName, object JSON = null)
-		{
-			//var typeName = "CSP.Book.Samples.SampleAppService, CSP.Book.Application";
-   //         var methodName2 = "GetAsync"; 
-
+		{ 
             var type = Type.GetType(serviceName);
 
-            var sampleAppService = (dynamic) MauiProgram.ServiceProvider.GetService(type);
+            var sampleAppService = (dynamic) MauiProgram.ServiceProvider.GetService(type);	// use IoC here 
 
             MethodInfo methodInfo = type.GetMethod(methodName);
-            var dtos = methodInfo.Invoke(sampleAppService, null);
+            var dtos = methodInfo.Invoke(sampleAppService, null);	// invoke service method 
 			
-            return JsonSerializer.Serialize(dtos);
+            return JsonSerializer.Serialize(dtos.Result);			
         }
 	}
 }

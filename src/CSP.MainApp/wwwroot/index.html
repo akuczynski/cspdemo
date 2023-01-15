@@ -18,6 +18,7 @@
 
 				try {
 					DotNet
+						// call .NET Service from Javascript client 	
 						.invokeMethodAsync('CSP.MainApp', 'ExecuteServiceCall', 'CSP.Book.Samples.SampleAppService, CSP.Book.Application', 'GetAsync', jsonObject)
 						.then(results => {
 							console.log(results);
