@@ -1,4 +1,4 @@
-﻿using CSP.Core;
+﻿using CSP.Settings;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
 
 namespace CSP.MainApp
 {
-    public class ApplicationSettings : IApplicationSettings, ISingletonDependency
+    public class ApplicationSettings : IApplicationSettings 
 	{
 		public const string DatabaseFilename = "CPS2SQLiteDBFile.db3";
 
