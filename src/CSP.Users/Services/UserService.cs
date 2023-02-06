@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSP.Core.Command;
 using CSP.ModuleContracts.Database;
+using CSP.Users.Command;
 using CSP.Users.Model;
 using GenHTTP.Api.Protocol;
 using GenHTTP.Modules.Webservices;
@@ -23,9 +25,7 @@ namespace CSP.Users.Services
 		[ResourceMethod]
 		public IReadOnlyList<User> GetUsers(int page, int pageSize)
         {
-			var task = _database.GetAllAsync();
-            task.Wait();
-
+            var task = _database.GetAllAsync();
             return task.Result; 
         }
 
@@ -33,39 +33,31 @@ namespace CSP.Users.Services
 		[ResourceMethod(":id")]
         public User? GetUser(long id)
         {
-			var task = _database.GetByIdAsync(id);
-            task.Wait();
-            return task.Result;
+			var result = _database.GetByIdAsync(id).Result;
+			return result;
 		}
 
         [ResourceMethod(RequestMethod.PUT)]
-        public long AddUser(string firstName, string lastName)
+        public async void AddUser(string firstName, string lastName)
         {
             var user = new User { FirstName = firstName, LastName = lastName };
-            var task = _database.SaveItemAsync(user);
-
-            task.Wait();
-            return task.Result;
+            await _database.SaveItemAsync(user);
         }
 
 		// POST http://localhost:8080/users/
 		[ResourceMethod(RequestMethod.POST)]
-        public long UpdateUser(User user)
+        public async Task<long> UpdateUser(User user)
         {
-			var task = _database.SaveItemAsync(user);
-            task.Wait();
-
-            return task.Result;
-        }
+			return await _database.SaveItemAsync(user);
+		}
 
         [ResourceMethod(RequestMethod.DELETE, ":id")]
-        public void DeleteUser(long id)
+        public async void DeleteUser(long id)
         {
-            var user = _database.GetByIdAsync(id);
-            if (user.Result != null)
+            var user = await _database.GetByIdAsync(id);
+            if (user != null)
             {
-                var task = _database.DeleteAsync(user.Result);
-                task.Wait();
+                await _database.DeleteAsync(user);
             }
         }
     }

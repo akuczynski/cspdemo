@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CSP</RootNamespace>
+	<Platforms>AnyCPU;ARM64;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSP.Application.Contracts\CSP.Application.Contracts.csproj" />
+	 <!-- add reference to modules -->
+	 <ProjectReference Include="..\..\modules\BookModule\src\CSP.Book.HttpApi\CSP.Book.HttpApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="6.0.2" />
+  </ItemGroup>
+
+</Project>

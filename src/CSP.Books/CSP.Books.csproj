@@ -4,16 +4,19 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<!--<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>-->
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSP.Database\CSP.Database.csproj" />
-    <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
-    <ProjectReference Include="..\CSP.Services\CSP.Services.csproj" />
+    <Compile Remove="Services\CarService.cs" />
   </ItemGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <ItemGroup>
+    <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
+    <ProjectReference Include="..\CSP.ModuleContracts\CSP.Core.csproj" />
+  </ItemGroup>
+
+	<!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)..\..\Assemblies\&quot; /Y" />
-	</Target>
+	</Target>-->
 </Project>

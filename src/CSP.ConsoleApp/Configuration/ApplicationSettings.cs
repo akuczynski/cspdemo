@@ -1,4 +1,4 @@
-﻿using CSP.ModuleContracts;
+﻿using CSP.Settings;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -13,14 +13,9 @@ namespace CSP.MainApp
 {
     public class ApplicationSettings : IApplicationSettings, ISingletonDependency
 	{
-        public ApplicationSettings(IConfiguration configuration)
-        {
-            DatabaseFilename = configuration.GetValue<string>("DatabaseFilename");
-        }
+		public const string DatabaseFilename = "CPS2SQLiteDBFile.db3";
 
-        public string DatabaseFilename { get; init; }
-
-        public string DatabasePath =>
+        public string DatabaseFilePath =>
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DatabaseFilename);
     }
 } 

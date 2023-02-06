@@ -1,24 +1,11 @@
-﻿using Volo.Abp.Modularity;
-using Volo.Abp;
-using CSP.Database;
-using CSP.ModuleContracts;
-using Microsoft.Extensions.DependencyInjection;
-using CSP.Books.Services;
-
+﻿using Volo.Abp.Modularity;  
 namespace CSP.Books
 {
-    [DependsOn(typeof(DatabaseModule))]
-	public class UsersModule : AbpModule
-	{
-		public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
-		{
-			RegisterRoutePaths(context);
-		}
-
-		private void RegisterRoutePaths(ApplicationInitializationContext context)
-		{
-			var routeService = context.ServiceProvider.GetService<IRouteService>();
-			routeService?.AddSerice<BookService>("books");
-		}
+    [DependsOn(typeof(CSPApplicationModule))]
+	public class BookModule : AbpModule
+	{ 
+		public override void ConfigureServices(ServiceConfigurationContext context)
+		{			 
+		} 
 	}
 }

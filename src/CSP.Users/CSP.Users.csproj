@@ -30,8 +30,4 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
-
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)..\..\Assemblies\&quot; /Y" />
-	</Target>
 </Project>

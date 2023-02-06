@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "CSP.Book.Domain.Shared": {
+      "path": "src/CSP.Book.Domain.Shared/CSP.Book.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.Domain": {
+      "path": "src/CSP.Book.Domain/CSP.Book.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.Application.Contracts": {
+      "path": "src/CSP.Book.Application.Contracts/CSP.Book.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.Application": {
+      "path": "src/CSP.Book.Application/CSP.Book.Application.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.EntityFrameworkCore": {
+      "path": "src/CSP.Book.EntityFrameworkCore/CSP.Book.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.MongoDB": {
+      "path": "src/CSP.Book.MongoDB/CSP.Book.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.HttpApi": {
+      "path": "src/CSP.Book.HttpApi/CSP.Book.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.HttpApi.Client": {
+      "path": "src/CSP.Book.HttpApi.Client/CSP.Book.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "CSP.Book.TestBase": {
+      "path": "test/CSP.Book.TestBase/CSP.Book.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.EntityFrameworkCore.Tests": {
+      "path": "test/CSP.Book.EntityFrameworkCore.Tests/CSP.Book.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.MongoDB.Tests": {
+      "path": "test/CSP.Book.MongoDB.Tests/CSP.Book.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.Domain.Tests": {
+      "path": "test/CSP.Book.Domain.Tests/CSP.Book.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.Application.Tests": {
+      "path": "test/CSP.Book.Application.Tests/CSP.Book.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.HttpApi.Host": {
+      "path": "host/CSP.Book.HttpApi.Host/CSP.Book.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "CSP.Book.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/CSP.Book.HttpApi.Client.ConsoleTestApp/CSP.Book.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "CSP.Book.AuthServer": {
+      "path": "host/CSP.Book.AuthServer/CSP.Book.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "CSP.Book.Host.Shared": {
+      "path": "host/CSP.Book.Host.Shared/CSP.Book.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

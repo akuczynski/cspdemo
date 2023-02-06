@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.ModuleContracts
+namespace CSP.Core
 {
 	public interface IApplicationSettings
 	{
-		string DatabasePath { get; }
+		string DatabaseFilePath { get; }
 	}
 }

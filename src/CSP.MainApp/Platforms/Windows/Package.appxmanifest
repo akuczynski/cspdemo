@@ -4,6 +4,8 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   IgnorableNamespaces="uap rescap">
 
   <Identity Name="maui-package-name-placeholder" Publisher="CN=User Name" Version="0.0.0.0" />
@@ -36,6 +38,18 @@
         <uap:DefaultTile Square71x71Logo="$placeholder$.png" Wide310x150Logo="$placeholder$.png" Square310x310Logo="$placeholder$.png" />
         <uap:SplashScreen Image="$placeholder$.png" />
       </uap:VisualElements>
+
+		<!-- This extension allow to execute the packaged app (MSIX) via command line -->
+		<!-- You need to add these namespace xmlns:uap3 and xmlns:desktop. Look at the top of this file. -->
+		<Extensions>
+			<uap3:Extension
+					Category="windows.appExecutionAlias"
+					EntryPoint="Windows.FullTrustApplication">
+				<uap3:AppExecutionAlias>
+					<desktop:ExecutionAlias Alias="CSPApp.exe" />
+				</uap3:AppExecutionAlias>
+			</uap3:Extension>
+		</Extensions>
     </Application>
   </Applications>
 

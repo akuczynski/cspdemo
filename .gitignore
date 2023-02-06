@@ -255,3 +255,4 @@ paket-files/
 src/CSP.MainApp.ConsoleApp/Logs/logs.txt
 Assemblies
 modules
+src/CSP.ConsoleApp/Logs/logs.txt

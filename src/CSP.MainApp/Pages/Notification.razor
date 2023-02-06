@@ -1,0 +1,43 @@
+﻿@page "/notification"
+@using Plugin.LocalNotification;
+@using Plugin.LocalNotification.EventArgs;
+ 
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code { 
+
+	private int currentCount = 0;
+
+	private void IncrementCount()
+	{
+		currentCount++;
+
+		ShowNotification();
+	}
+
+	private void ShowNotification() 
+	{
+		var request = new NotificationRequest
+			{
+				NotificationId = 1337,
+				Title = "Sample notification",
+				Subtitle = "Hello",
+				Description = "It's me",
+				BadgeNumber = 42,
+				Schedule = new NotificationRequestSchedule
+				{
+					NotifyTime = DateTime.Now.AddSeconds(5),
+					NotifyRepeatInterval = TimeSpan.FromDays(1),
+				}
+			};
+
+		#if ANDROID
+		LocalNotificationCenter.Current.Show(request);
+		#endif
+	} 
+}
+

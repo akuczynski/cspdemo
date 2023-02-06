@@ -5,14 +5,17 @@ using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
-using CSP.ModuleContracts;
 using Microsoft.Maui.Controls.PlatformConfiguration;
+using CSP.Data;
+using Plugin.LocalNotification;
 
 namespace CSP.MainApp;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+    public static IServiceProvider ServiceProvider { get; private set; }
+
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -23,7 +26,11 @@ public static class MauiProgram
 			})
             .ConfigureContainer(new AbpAutofacServiceProviderFactory(new Autofac.ContainerBuilder()));
 
-        ConfigureConfiguration(builder);
+#if ANDROID
+		LocalNotificationExtensions.UseLocalNotification(builder);
+#endif
+
+		ConfigureConfiguration(builder);
 
  #if ANDROID
 		var appDir = FileSystem.Current.AppDataDirectory;
@@ -31,12 +38,12 @@ public static class MauiProgram
 
 #else
        var appDir = AppDomain.CurrentDomain.BaseDirectory;
-	   var pluginsFolder = Path.Combine(appDir, string.Format("..{0}Modules", Path.DirectorySeparatorChar));
+//	   var pluginsFolder = Path.Combine(appDir, string.Format("..{0}Modules", Path.DirectorySeparatorChar));
 #endif
 		builder.Services.AddApplication<MainAppModule>(options =>
 		{
 			options.Services.ReplaceConfiguration(builder.Configuration);
-            options.PlugInSources.AddFolder(pluginsFolder);
+     //       options.PlugInSources.AddFolder(pluginsFolder);
 		});
 
 
@@ -46,6 +53,7 @@ public static class MauiProgram
 #endif
 
         var app = builder.Build();
+        ServiceProvider = app.Services;
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 

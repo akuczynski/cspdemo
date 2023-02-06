@@ -21,6 +21,8 @@ namespace CSP.WebGate
         private readonly ILogger<HostService> _logger;
 		private readonly IRouteService _routeService;
 
+		public string Name => "GENHTTP_HOST";
+
 		public HostService(ILogger<HostService> logger, IRouteService routeService)
         {
             _logger = logger;
