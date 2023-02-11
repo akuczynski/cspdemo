@@ -28,36 +28,13 @@ var passwordTokenRequest = new PasswordTokenRequest
 	Password = password,
 	Scope = "CSP profile roles email phone",
 };
-//passwordTokenRequest.Headers.Add("__tenant", "Default");
 var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
 
 if (tokenResponse.IsError)
 {
 	throw new Exception(tokenResponse.Error);
 }
-
-//Console.WriteLine("Access token: {0}", tokenResponse.AccessToken);
-//Console.WriteLine();
-//Console.WriteLine("Refresh token: {0}", tokenResponse.RefreshToken);
-//Console.WriteLine();
-
-//var refreshTokenResponse = await client.RequestRefreshTokenAsync(new RefreshTokenRequest()
-//{
-//	Address = configuration.TokenEndpoint,
-//	ClientId = clientId,
-//	ClientSecret = clientSecret
-////	RefreshToken = tokenResponse.RefreshToken
-//});
-
-//if (refreshTokenResponse.IsError)
-//{
-//	throw new Exception(refreshTokenResponse.Error);
-//}
-
-//Console.WriteLine("New Access token: {0}", refreshTokenResponse.AccessToken);
-//Console.WriteLine();
-//Console.WriteLine("New Refresh token: {0}", refreshTokenResponse.RefreshToken);
-//Console.WriteLine();
+ 
 
 var userinfo = await client.GetUserInfoAsync(new UserInfoRequest()
 {
@@ -74,26 +51,7 @@ Console.WriteLine("UserInfo: {0}", JsonSerializer.Serialize(JsonDocument.Parse(u
 	WriteIndented = true
 }));
 Console.WriteLine();
-
-
-var introspectionResponse = await client.IntrospectTokenAsync(new TokenIntrospectionRequest()
-{
-	Address = configuration.IntrospectionEndpoint,
-	ClientId = clientId,
-	ClientSecret = clientSecret,
-	Token = tokenResponse.AccessToken,
-	TokenTypeHint = "access_token"
-});
-if (introspectionResponse.IsError)
-{
-	throw new Exception(introspectionResponse.Error);
-}
-
-Console.WriteLine("Introspection : {0}", JsonSerializer.Serialize(JsonDocument.Parse(introspectionResponse.Raw), new JsonSerializerOptions
-{
-	WriteIndented = true
-}));
-Console.WriteLine();
+ 
 
 var serverRequest = new HttpRequestMessage(HttpMethod.Get, serverApi);
 serverRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
@@ -121,42 +79,6 @@ response.EnsureSuccessStatusCode();
 Console.WriteLine("API response: {0}", JsonSerializer.Serialize(JsonDocument.Parse(await response.Content.ReadAsStringAsync()), new JsonSerializerOptions
 {
 	WriteIndented = true
-}));
-
-Console.WriteLine();
-
-client = new HttpClient();
-
-tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-{
-	Address = configuration.TokenEndpoint,
-
-	ClientId = clientId,
-	ClientSecret = clientSecret,
-
-	Scope = "AbpAPI profile roles email phone offline_access",
-});
-
-if (tokenResponse.IsError)
-{
-	Console.WriteLine(tokenResponse.Error);
-	return;
-}
-
-Console.WriteLine("Access token: {0}", tokenResponse.AccessToken);
-Console.WriteLine();
-Console.WriteLine("Refresh token: {0}", tokenResponse.RefreshToken);
-Console.WriteLine();
-
-serverRequest = new HttpRequestMessage(HttpMethod.Get, api);
-serverRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
-
-serverResponse = await client.SendAsync(serverRequest);
-serverResponse.EnsureSuccessStatusCode();
-
-Console.WriteLine("ClientCredentials API response: {0}", JsonSerializer.Serialize(JsonDocument.Parse(await serverResponse.Content.ReadAsStringAsync()), new JsonSerializerOptions
-{
-	WriteIndented = true
-}));
+})); 
 
 Console.WriteLine();
