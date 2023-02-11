@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace CSP.MainApp
+namespace CSP.Blazor
 {
     public class ApplicationSettings : IApplicationSettings, ISingletonDependency
 	{
@@ -30,6 +30,6 @@ namespace CSP.MainApp
 				var basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 				return Path.Combine(basePath, DatabaseFilename);
 			}
-		}
+		} 
 	}
-} 
+}

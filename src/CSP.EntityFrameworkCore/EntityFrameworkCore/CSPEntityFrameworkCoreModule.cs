@@ -69,5 +69,10 @@ public class CSPEntityFrameworkCoreModule : AbpModule
              
             options.UseSqlite();
         });
-    } 
+
+		Configure<AbpUnitOfWorkDefaultOptions>(options =>
+		{
+			options.TransactionBehavior = UnitOfWorkTransactionBehavior.Disabled;
+		});
+	} 
 }
