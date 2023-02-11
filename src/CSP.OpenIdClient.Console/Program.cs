@@ -5,10 +5,10 @@ using Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations;
 
 const string email = "admin@abp.io";
 const string password = "1q2w3E*";
-const string server = "https://localhost:44301/";
-const string serverApi = "https://localhost:44301/api/abp/application-configuration";
-const string api = "https://localhost:44303/api/claims";
-const string clientId = "AbpApp";
+const string server = "https://localhost:44314/";
+const string serverApi = "https://localhost:44314/api/abp/application-configuration";
+const string api = "https://localhost:44314/api/claims";
+const string clientId = "CSP_App";
 const string clientSecret = "1q2w3e*";
 
 var client = new HttpClient();
@@ -23,12 +23,12 @@ var passwordTokenRequest = new PasswordTokenRequest
 {
 	Address = configuration.TokenEndpoint,
 	ClientId = clientId,
-	ClientSecret = clientSecret,
+//	ClientSecret = clientSecret,
 	UserName = email,
 	Password = password,
-	Scope = "AbpAPI profile roles email phone offline_access",
+	Scope = "CSP profile roles email phone",
 };
-passwordTokenRequest.Headers.Add("__tenant", "Default");
+//passwordTokenRequest.Headers.Add("__tenant", "Default");
 var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
 
 if (tokenResponse.IsError)
@@ -36,28 +36,28 @@ if (tokenResponse.IsError)
 	throw new Exception(tokenResponse.Error);
 }
 
-Console.WriteLine("Access token: {0}", tokenResponse.AccessToken);
-Console.WriteLine();
-Console.WriteLine("Refresh token: {0}", tokenResponse.RefreshToken);
-Console.WriteLine();
+//Console.WriteLine("Access token: {0}", tokenResponse.AccessToken);
+//Console.WriteLine();
+//Console.WriteLine("Refresh token: {0}", tokenResponse.RefreshToken);
+//Console.WriteLine();
 
-var refreshTokenResponse = await client.RequestRefreshTokenAsync(new RefreshTokenRequest()
-{
-	Address = configuration.TokenEndpoint,
-	ClientId = clientId,
-	ClientSecret = clientSecret,
-	RefreshToken = tokenResponse.RefreshToken
-});
+//var refreshTokenResponse = await client.RequestRefreshTokenAsync(new RefreshTokenRequest()
+//{
+//	Address = configuration.TokenEndpoint,
+//	ClientId = clientId,
+//	ClientSecret = clientSecret
+////	RefreshToken = tokenResponse.RefreshToken
+//});
 
-if (refreshTokenResponse.IsError)
-{
-	throw new Exception(refreshTokenResponse.Error);
-}
+//if (refreshTokenResponse.IsError)
+//{
+//	throw new Exception(refreshTokenResponse.Error);
+//}
 
-Console.WriteLine("New Access token: {0}", refreshTokenResponse.AccessToken);
-Console.WriteLine();
-Console.WriteLine("New Refresh token: {0}", refreshTokenResponse.RefreshToken);
-Console.WriteLine();
+//Console.WriteLine("New Access token: {0}", refreshTokenResponse.AccessToken);
+//Console.WriteLine();
+//Console.WriteLine("New Refresh token: {0}", refreshTokenResponse.RefreshToken);
+//Console.WriteLine();
 
 var userinfo = await client.GetUserInfoAsync(new UserInfoRequest()
 {
