@@ -2,7 +2,9 @@
  
 @using CSP.Book;
 @using CSP.Book.Samples;
-@using Volo.Abp.Application.Dtos;
+@using System.Net.Http.Headers;
+@using IdentityModel.Client;
+@using Volo.Abp.Application.Dtos; 
 
 @inject ISampleAppService bookService
 
@@ -35,11 +37,73 @@ else
 	</table>
 }
 
+<button class="btn btn-primary" @onclick="GetAuthors">Call protected API</button>
+<p role="status">@author</p>
+
 @code {
 	private ListResultDto<BookDto> books;
+
+	private string author;
 
 	protected override async Task OnInitializedAsync()
 	{
 		books = await bookService.GetAsync();
+	}
+
+	// This is remote call 
+	public async Task GetAuthors()
+	{
+		try
+		{
+			var client = new HttpClient();
+			string api = "https://localhost:44314/api/book/authors";
+			var tokenResponse = await GetToken();
+			var request = new HttpRequestMessage(HttpMethod.Get, api);
+			request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
+
+			var response = await client.SendAsync(request);
+			response.EnsureSuccessStatusCode();
+
+			author = await response.Content.ReadAsStringAsync();
+		}
+		catch (Exception ex)
+		{
+			author = "No access !";
+		}
+	}
+
+	private async Task<TokenResponse> GetToken()
+	{
+		var client = new HttpClient();
+
+		string email = "test@abp.io";
+		string password = "1q2w3E*";
+		string server = "https://localhost:44314/";
+		string clientId = "CSP_App";
+		//string clientSecret = "1q2w3e*";
+
+		var configuration = await client.GetDiscoveryDocumentAsync(server);
+		if (configuration.IsError)
+		{
+			throw new Exception(configuration.Error);
+		}
+
+		var passwordTokenRequest = new PasswordTokenRequest
+			{
+				Address = configuration.TokenEndpoint,
+				ClientId = clientId,
+				//	ClientSecret = clientSecret,
+				UserName = email,
+				Password = password,
+				Scope = "CSP profile roles email phone",
+			};
+		var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
+
+		if (tokenResponse.IsError)
+		{
+			throw new Exception(tokenResponse.Error);
+		}
+
+		return tokenResponse;
 	}
 }

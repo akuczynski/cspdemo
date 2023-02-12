@@ -129,8 +129,31 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
             );
         }
 
-        // Blazor Client
-        var blazorClientId = configurationSection["CSP_Blazor:ClientId"];
+		// MAUI client 
+		var mauiClientId = configurationSection["CSP_MAUI:ClientId"];
+		if (!mauiClientId.IsNullOrWhiteSpace())
+		{
+			var mauiRootUrl = configurationSection["CSP_MAUI:RootUrl"].TrimEnd('/');
+
+			await CreateApplicationAsync(
+				name: mauiClientId,
+				type: OpenIddictConstants.ClientTypes.Public,
+				consentType: OpenIddictConstants.ConsentTypes.Implicit,
+				displayName: "MAUI Application",
+				secret: null,
+				grantTypes: new List<string>
+				{
+					OpenIddictConstants.GrantTypes.AuthorizationCode,
+				},
+				scopes: commonScopes,
+				redirectUri: $"{mauiRootUrl}/authentication/login-callback",
+				clientUri: mauiRootUrl,
+				postLogoutRedirectUri: $"{mauiRootUrl}/authentication/logout-callback"
+			);
+		}
+
+		// Blazor Client
+		var blazorClientId = configurationSection["CSP_Blazor:ClientId"];
         if (!blazorClientId.IsNullOrWhiteSpace())
         {
             var blazorRootUrl = configurationSection["CSP_Blazor:RootUrl"].TrimEnd('/');

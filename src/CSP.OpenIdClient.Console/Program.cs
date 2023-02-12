@@ -89,7 +89,6 @@ Console.WriteLine("API response (Quote of the day): {0}", JsonSerializer.Seriali
 // get authors 
 try
 {
-
 	var request2 = new HttpRequestMessage(HttpMethod.Get, api2);
 	request2.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 
