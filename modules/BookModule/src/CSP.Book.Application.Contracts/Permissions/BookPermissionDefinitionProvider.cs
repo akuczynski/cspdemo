@@ -9,6 +9,9 @@ public class BookPermissionDefinitionProvider : PermissionDefinitionProvider
     public override void Define(IPermissionDefinitionContext context)
     {
         var myGroup = context.AddGroup(BookPermissions.GroupName, L("Permission:Book"));
+
+        myGroup.AddPermission("Book_Get_Quote", L("Permission:Book:Get_Quote"));
+        myGroup.AddPermission("Book_Authors", L("Permission:Book:Authors"));
     }
 
     private static LocalizableString L(string name)

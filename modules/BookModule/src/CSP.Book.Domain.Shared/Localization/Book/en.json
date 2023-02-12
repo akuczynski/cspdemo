@@ -1,7 +1,10 @@
 {
   "culture": "en",
   "texts": {
-    "MyAccount":  "My account",
-    "SamplePageMessage": "A sample page for the Book module"
+    "MyAccount": "My account",
+    "SamplePageMessage": "A sample page for the Book module",
+    "Permission:Book": "Book module",
+    "Permission:Book:Get_Quote": "Get Quote",
+    "Permission:Book:Authors": "Get Authors"
   }
 }

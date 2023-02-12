@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -33,5 +34,18 @@ public class SampleAppService : BookAppService, ISampleAppService
     public async Task<ListResultDto<BookDto>> GetAuthorizedAsync()
     {
 		return await GetAsync();
+	}
+
+
+	[Authorize("Book_Get_Quote")]
+	public Tuple<string, string> GetQuoteOfTheDay()
+	{
+		return new Tuple<string, string>("All you need in this life is ignorance and confidence, and then success is sure.", "Mark Twain");
+	}
+
+	[Authorize("Book_Authors")]
+	public string GetAuthors()
+	{
+		return "Mark Twain";
 	}
 }

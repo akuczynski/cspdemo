@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
@@ -8,7 +9,7 @@ namespace CSP.Book.Samples;
 
 [Area(BookRemoteServiceConsts.ModuleName)]
 [RemoteService(Name = BookRemoteServiceConsts.RemoteServiceName)]
-[Route("api/Book/sample")]
+[Route("api/book")]
 public class SampleController : BookController, ISampleAppService
 {
     private readonly ISampleAppService _sampleAppService;
@@ -18,7 +19,8 @@ public class SampleController : BookController, ISampleAppService
         _sampleAppService = sampleAppService;
     }
 
-    [HttpGet]
+
+	[HttpGet]
     public async Task<ListResultDto<BookDto>> GetAsync()
     {
         return await _sampleAppService.GetAsync();
@@ -31,4 +33,20 @@ public class SampleController : BookController, ISampleAppService
     {
         return await _sampleAppService.GetAsync();
     }
+
+    [HttpGet]
+    [Authorize]
+    [Route("authors")]
+	public string GetAuthors()
+	{
+		return _sampleAppService.GetAuthors();
+	}
+
+	[HttpGet]
+	[Authorize]
+	[Route("quote")]
+	public Tuple<string, string> GetQuoteOfTheDay()
+	{
+        return _sampleAppService.GetQuoteOfTheDay();
+	}
 }
