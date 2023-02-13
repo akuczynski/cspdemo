@@ -144,6 +144,9 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 				grantTypes: new List<string>
 				{
 					OpenIddictConstants.GrantTypes.AuthorizationCode,
+					OpenIddictConstants.GrantTypes.Password,
+					OpenIddictConstants.GrantTypes.ClientCredentials,
+					OpenIddictConstants.GrantTypes.RefreshToken
 				},
 				scopes: commonScopes,
 				redirectUri: $"{mauiRootUrl}/authentication/login-callback",
@@ -166,7 +169,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 secret: null,
                 grantTypes: new List<string>
                 {
-                    OpenIddictConstants.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.GrantTypes.AuthorizationCode
                 },
                 scopes: commonScopes,
                 redirectUri: $"{blazorRootUrl}/authentication/login-callback",

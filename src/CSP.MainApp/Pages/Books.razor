@@ -37,32 +37,43 @@ else
 	</table>
 }
 
+
+
 <button class="btn btn-primary" @onclick="GetAuthors">Call protected API</button>
 <p role="status">@author</p>
 
 @code {
 	private ListResultDto<BookDto> books;
 
+	private string ngrokUrl = "https://3ab9-165-225-194-91.eu.ngrok.io";
+
 	private string author;
 
 	protected override async Task OnInitializedAsync()
 	{
+		// this is local call to the service method 
 		books = await bookService.GetAsync();
 	}
 
-	// This is remote call 
 	public async Task GetAuthors()
 	{
 		try
 		{
+			// This is remote call to the service method
+			// you have to use HttpClient to call any method which is decorated with Authorize attribute ! 
+
 			var client = new HttpClient();
-			string api = "https://localhost:44314/api/book/authors";
+			var api ="https://localhost:44314/api/book/authors";
+			#if ANDROID
+			api = $"{ngrokUrl}/api/book/authors";
+			#endif		
 			var tokenResponse = await GetToken();
+			
 			var request = new HttpRequestMessage(HttpMethod.Get, api);
 			request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 
 			var response = await client.SendAsync(request);
-			response.EnsureSuccessStatusCode();
+			response.EnsureSuccessStatusCode(); 
 
 			author = await response.Content.ReadAsStringAsync();
 		}
@@ -78,7 +89,11 @@ else
 
 		string email = "test@abp.io";
 		string password = "1q2w3E*";
-		string server = "https://localhost:44314/";
+		string server = "https://localhost:44314/"; 
+		#if ANDROID
+		server = ngrokUrl;
+		#endif
+		
 		string clientId = "CSP_App";
 		//string clientSecret = "1q2w3e*";
 
