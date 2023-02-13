@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSP.MainApp.Model
+namespace CSP.MainApp.Models
 {
 	internal class User
 	{

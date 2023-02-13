@@ -1,0 +1,50 @@
+﻿@page "/auth"
+@using CSP.Book.Samples;
+@using CSP.MainApp.Services;
+
+@inject ISampleAppService bookService
+@inject IAppService AppService;
+
+<h1>Auth example</h1>
+
+<div>
+	<button class="btn btn-primary" @onclick="GetAuthorOfTheDayLocal">Local service call</button>
+	<p role="status">@author1</p>
+</div>
+
+<div>
+	<button class="btn btn-primary" @onclick="GetAuthorOfTheDayRemote">Remote service call (author)</button>
+	<p role="status">@author2</p>
+</div>
+
+<div>
+	<button class="btn btn-primary" @onclick="GetQuoteOfTheDayRemote">Remote service call 2 (quote)</button>
+	<p role="status">@quote</p>
+</div>
+
+@code {
+	private string author1;
+	private string author2;
+	private string quote; 
+
+	public void GetAuthorOfTheDayLocal()
+	{
+		// no HTTP request 
+		author1 = bookService.GetAuthorOfTheDay();
+	}
+
+	public async Task GetAuthorOfTheDayRemote()
+	{
+		// this cause HTTP request 
+		author2 = await AppService.GetAuthorOfTheDay();
+	}
+
+	public async Task GetQuoteOfTheDayRemote()
+	{
+		// this cause HTTP request
+		quote = await AppService.GetQuoteOfTheDay();
+	}
+
+	// test user: test@abp.io:1q2w3E* 
+	// admin user: admin@abp.io:1q2w3E*
+}

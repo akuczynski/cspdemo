@@ -36,11 +36,7 @@ else
 		</tbody>
 	</table>
 }
-
-
-
-<button class="btn btn-primary" @onclick="GetAuthors">Call protected API</button>
-<p role="status">@author</p>
+ 
 
 @code {
 	private ListResultDto<BookDto> books;
@@ -53,72 +49,5 @@ else
 	{
 		// this is local call to the service method 
 		books = await bookService.GetAsync();
-	}
-
-	public async Task GetAuthors()
-	{
-		try
-		{
-			// This is remote call to the service method
-			// you have to use HttpClient to call any method which is decorated with Authorize attribute ! 
-
-			var client = new HttpClient();
-			var api ="https://localhost:44314/api/book/authors";
-			#if ANDROID
-			api = $"{ngrokUrl}/api/book/authors";
-			#endif		
-			var tokenResponse = await GetToken();
-			
-			var request = new HttpRequestMessage(HttpMethod.Get, api);
-			request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
-
-			var response = await client.SendAsync(request);
-			response.EnsureSuccessStatusCode(); 
-
-			author = await response.Content.ReadAsStringAsync();
-		}
-		catch (Exception ex)
-		{
-			author = "No access !";
-		}
-	}
-
-	private async Task<TokenResponse> GetToken()
-	{
-		var client = new HttpClient();
-
-		string email = "test@abp.io";
-		string password = "1q2w3E*";
-		string server = "https://localhost:44314/"; 
-		#if ANDROID
-		server = ngrokUrl;
-		#endif
-		
-		string clientId = "CSP_App";
-		//string clientSecret = "1q2w3e*";
-
-		var configuration = await client.GetDiscoveryDocumentAsync(server);
-		if (configuration.IsError)
-		{
-			throw new Exception(configuration.Error);
-		}
-
-		var passwordTokenRequest = new PasswordTokenRequest
-			{
-				Address = configuration.TokenEndpoint,
-				ClientId = clientId,
-				//	ClientSecret = clientSecret,
-				UserName = email,
-				Password = password,
-				Scope = "CSP profile roles email phone",
-			};
-		var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
-
-		if (tokenResponse.IsError)
-		{
-			throw new Exception(tokenResponse.Error);
-		}
-
-		return tokenResponse;
-	}
+	}	 
 }

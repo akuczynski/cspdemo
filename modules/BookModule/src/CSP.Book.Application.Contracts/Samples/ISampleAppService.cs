@@ -11,7 +11,7 @@ public interface ISampleAppService : IApplicationService
 
 	Task<ListResultDto<BookDto>> GetAuthorizedAsync();
 
-	Tuple<string, string> GetQuoteOfTheDay();
+	string GetQuoteOfTheDay();
 
-	string GetAuthors();
+	string GetAuthorOfTheDay();
 }

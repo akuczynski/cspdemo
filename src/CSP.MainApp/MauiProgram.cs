@@ -8,6 +8,7 @@ using Volo.Abp.Modularity.PlugIns;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using CSP.Data;
 using Plugin.LocalNotification;
+using CSP.MainApp.Services;
 
 namespace CSP.MainApp;
 
@@ -51,8 +52,9 @@ public static class MauiProgram
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
+		builder.Services.AddSingleton<IAppService, AppService>();
 
-        var app = builder.Build();
+		var app = builder.Build();
         ServiceProvider = app.Services;
 
         app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);

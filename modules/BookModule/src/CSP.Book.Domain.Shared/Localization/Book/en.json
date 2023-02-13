@@ -5,6 +5,6 @@
     "SamplePageMessage": "A sample page for the Book module",
     "Permission:Book": "Book module",
     "Permission:Book:Get_Quote": "Get Quote",
-    "Permission:Book:Authors": "Get Authors"
+    "Permission:Book:Get_Author": "Get Author"
   }
 }

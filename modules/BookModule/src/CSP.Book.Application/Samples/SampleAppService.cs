@@ -38,13 +38,13 @@ public class SampleAppService : BookAppService, ISampleAppService
 
 
 	[Authorize("Book_Get_Quote")]
-	public Tuple<string, string> GetQuoteOfTheDay()
+	public string GetQuoteOfTheDay()
 	{
-		return new Tuple<string, string>("All you need in this life is ignorance and confidence, and then success is sure.", "Mark Twain");
+		return "All you need in this life is ignorance and confidence, and then success is sure.";
 	}
 
-	[Authorize("Book_Authors")]
-	public string GetAuthors()
+//	[Authorize("Book_Get_Author")]
+	public string GetAuthorOfTheDay()
 	{
 		return "Mark Twain";
 	}

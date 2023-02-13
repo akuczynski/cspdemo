@@ -35,17 +35,17 @@ public class SampleController : BookController, ISampleAppService
     }
 
     [HttpGet]
-    [Authorize]
+    [Authorize("Book_Get_Author")]
     [Route("authors")]
-	public string GetAuthors()
+	public string GetAuthorOfTheDay()
 	{
-		return _sampleAppService.GetAuthors();
+		return _sampleAppService.GetAuthorOfTheDay();
 	}
 
 	[HttpGet]
 	[Authorize]
 	[Route("quote")]
-	public Tuple<string, string> GetQuoteOfTheDay()
+	public string GetQuoteOfTheDay()
 	{
         return _sampleAppService.GetQuoteOfTheDay();
 	}
