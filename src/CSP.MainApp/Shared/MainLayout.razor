@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @using CSP.MainApp.Models
+@inject NavigationManager NavManager;
 
 <div class="page">
 	<div class="sidebar">
@@ -12,6 +13,7 @@
 	<main>
 		<div class="top-row px-4">
 			<a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+			<button class="nav-link btn btn-link" @onclick="SignOut">Log out</button>
 		</div>
 
 		<article class="content px-4">
@@ -19,3 +21,12 @@
 		</article>
 	</main>
 </div>
+
+@code {
+	private void SignOut()
+	{
+		SecureStorage.RemoveAll();
+		Setting.UserBasicDetail = null;
+		NavManager.NavigateTo("/login");
+	}
+}

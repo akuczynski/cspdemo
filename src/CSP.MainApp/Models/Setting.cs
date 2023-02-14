@@ -9,6 +9,9 @@ namespace CSP.MainApp.Models
     internal class Setting
     {
         public static UserBasicDetail UserBasicDetail { get; set; }
-        public const string BaseUrl = "https://localhost:44314";
+
+        public const string BaseUrl = "https://localhost:44314"; 
+        
+        // Tip: When you use Ngrok.exe remember to shutdown eScaler  
     }
 }

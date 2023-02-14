@@ -36,7 +36,7 @@ public class SampleController : BookController, ISampleAppService
 
     [HttpGet]
     [Authorize("Book_Get_Author")]
-    [Route("authors")]
+    [Route("author")]
 	public string GetAuthorOfTheDay()
 	{
 		return _sampleAppService.GetAuthorOfTheDay();

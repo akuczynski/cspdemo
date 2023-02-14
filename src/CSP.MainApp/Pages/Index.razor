@@ -1,9 +1,18 @@
 ﻿@page "/dashboard"
 @using CSP.MainApp.Models
+@inject NavigationManager NavManager;
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
- 
-@Setting.UserBasicDetail.Email
+Welcome to your new app. 
 
+@Setting.UserBasicDetail.Email <button class="nav-link btn btn-link" @onclick="SignOut">Log out</button>
+
+@code {
+	private void SignOut()
+	{
+		SecureStorage.RemoveAll();
+		Setting.UserBasicDetail = null;
+		NavManager.NavigateTo("/login");
+	}
+}
