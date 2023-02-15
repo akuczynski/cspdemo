@@ -1,4 +1,5 @@
 ﻿using CSP.MainApp.Models;
+using IdentityModel;
 using IdentityModel.Client;
 using Newtonsoft.Json;
 using Scriban.Runtime.Accessors;
@@ -18,14 +19,14 @@ namespace CSP.MainApp.Services
 
             using (var client = new HttpClient())
             {
-                var url = $"{Setting.BaseUrl}{APIs.Token}";     // change this to auhorize 
-                string clientId = "CSP_App";
+                var url = $"{Setting.BaseUrl}{APIs.Token}";     // change this to auhorize ? 
+                string clientId = "CSP_MAUI";
 
                 var passwordTokenRequest = new PasswordTokenRequest
                 {
                     Address = url,
                     ClientId = clientId,
-                    //	ClientSecret = clientSecret,
+                 //   ClientSecret = "12xc!2".ToSha256(),
                     UserName = loginModel.Email,
                     Password = loginModel.Password,
                     Scope = "CSP profile roles email phone",

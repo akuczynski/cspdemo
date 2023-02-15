@@ -2,17 +2,19 @@
 using System.Text.Json;
 using IdentityModel.Client;
 using Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations;
+using static System.Net.Mime.MediaTypeNames;
 
-const string email = "test@abp.io";
+// users: admin@abp.io, test@abp.io 
+const string email = "test@abp.io"; 		
 const string password = "1q2w3E*";
 const string server = "https://localhost:44314/";
 const string serverApi = "https://localhost:44314/api/abp/application-configuration";
 // const string api = "https://localhost:44314/api/claims";
 const string api = "https://localhost:44314/api/book/quote";
-const string api2 = "https://localhost:44314/api/book/authors";
+const string api2 = "https://localhost:44314/api/book/author";
 
-const string clientId = "CSP_App";
-const string clientSecret = "1q2w3e*";
+const string clientId = "CSP_APP";
+//const string clientSecret = "1q2w3e*";
 
 var client = new HttpClient();
 
@@ -81,10 +83,10 @@ request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenRes
 var response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 
-Console.WriteLine("API response (Quote of the day): {0}", JsonSerializer.Serialize(JsonDocument.Parse(await response.Content.ReadAsStringAsync()), new JsonSerializerOptions
+Console.WriteLine("API response (Quote of the day): {0}", await response.Content.ReadAsStringAsync(), new JsonSerializerOptions
 {
 	WriteIndented = true
-}));
+});
 
 // get authors 
 try
@@ -101,4 +103,4 @@ try
 	Console.WriteLine("No access !");
 }
 
-Console.WriteLine();
+Console.ReadLine();

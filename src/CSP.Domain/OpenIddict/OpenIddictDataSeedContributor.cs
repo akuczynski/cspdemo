@@ -135,24 +135,24 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 		{
 			var mauiRootUrl = configurationSection["CSP_MAUI:RootUrl"].TrimEnd('/');
 
-			await CreateApplicationAsync(
-				name: mauiClientId,
-				type: OpenIddictConstants.ClientTypes.Public,
-				consentType: OpenIddictConstants.ConsentTypes.Implicit,
-				displayName: "MAUI Application",
-				secret: null,
-				grantTypes: new List<string>
-				{
-					OpenIddictConstants.GrantTypes.AuthorizationCode,
-					OpenIddictConstants.GrantTypes.Password,
-					OpenIddictConstants.GrantTypes.ClientCredentials,
-					OpenIddictConstants.GrantTypes.RefreshToken
-				},
-				scopes: commonScopes,
-				redirectUri: $"{mauiRootUrl}/authentication/login-callback",
-				clientUri: mauiRootUrl,
-				postLogoutRedirectUri: $"{mauiRootUrl}/authentication/logout-callback"
-			);
+            await CreateApplicationAsync(
+                name: mauiClientId,
+                type: OpenIddictConstants.ClientTypes.Public,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "MAUI Application",
+                secret: null, //configurationSection["CSP_MAUI:ClientSecret"] ?? "1q2w3e*",
+                grantTypes: new List<string>
+                {
+                    OpenIddictConstants.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.GrantTypes.Password,
+                    OpenIddictConstants.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.GrantTypes.RefreshToken
+                },
+                scopes: commonScopes,
+                redirectUri: mauiRootUrl, //"myapp://callback",
+                clientUri: mauiRootUrl,
+                postLogoutRedirectUri: mauiRootUrl
+            ) ;
 		}
 
 		// Blazor Client
