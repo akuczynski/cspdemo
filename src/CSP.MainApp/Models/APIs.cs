@@ -14,7 +14,7 @@ namespace CSP.MainApp.Models
 
         public const string QuoteOfTheDay = "/api/book/quote";
 
-        public const string AuthorOfTheDay = "/api/book/authors";
+        public const string AuthorOfTheDay = "/api/book/author";
 
 	   // public const string RefreshToken = "/api/Users/RefreshToken";
 	}
