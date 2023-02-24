@@ -18,7 +18,7 @@ public class BookMenuContributor : IMenuContributor
     private Task ConfigureMainMenuAsync(MenuConfigurationContext context)
     {
         //Add main menu items.
-        var bookMenuItem = new ApplicationMenuItem(BookMenus.Prefix, displayName: "Book", "/Book", icon: "fa fa-globe");
+        var bookMenuItem = new ApplicationMenuItem(BookMenus.Prefix, displayName: "Book", "~/Book", icon: "fa fa-globe");
 
         //  when this menu item have to be visible only by the authenticated users then add call to RequireAuthenticated(); 
         context.Menu.AddItem(bookMenuItem);
@@ -35,7 +35,13 @@ public class BookMenuContributor : IMenuContributor
                 "SubPage2",
                 url: "~/Book/SubPage2"
             ).RequirePermissions("Book_Get_Quote"));
-         
+
+        bookMenuItem.AddItem(new ApplicationMenuItem(
+                "BookSubPage3",
+                "SubPage3",
+                url: "~/Book/SubPage3"
+            ));
+
         return Task.CompletedTask;
     }
 
