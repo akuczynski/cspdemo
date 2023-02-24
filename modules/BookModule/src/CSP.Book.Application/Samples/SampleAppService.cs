@@ -43,7 +43,7 @@ public class SampleAppService : BookAppService, ISampleAppService
 		return "All you need in this life is ignorance and confidence, and then success is sure.";
 	}
 
-//	[Authorize("Book_Get_Author")]
+	[Authorize("Book_Get_Author")]
 	public string GetAuthorOfTheDay()
 	{
 		return "Mark Twain";

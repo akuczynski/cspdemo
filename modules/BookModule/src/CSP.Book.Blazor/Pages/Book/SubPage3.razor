@@ -1,0 +1,27 @@
+@page "/Book/SubPage3"
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.Extensions.Localization
+@using global::CSP.Book.Localization
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IStringLocalizer<BookResource> L
+@{
+} 
+
+<h1>Book - subpage3</h1>
+
+<AuthorizeView>
+    <Authorized>This content is displayed if the user is Authorized</Authorized>
+    <NotAuthorized>This content is displayed if the user is Not Authorized</NotAuthorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="admin">
+    <p>Displayed if the logged in user is in admin role</p>
+</AuthorizeView>
+
+<AuthorizeView Roles="users">
+    <p>Displayed if the logged in user is in users role</p>
+</AuthorizeView>
+
+<AuthorizeView Policy="Book_Get_Quote">
+    <p>Displayed if the logged in user has Book_Get_Quote policy</p>
+</AuthorizeView>
