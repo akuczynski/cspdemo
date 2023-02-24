@@ -10,8 +10,7 @@ namespace CSP.MainApp.Models
     {
         public static UserBasicDetail UserBasicDetail { get; set; }
 
-        public const string BaseUrl = "https://df45-89-239-124-15.eu.ngrok.io"; // "https://localhost:44314"; 
-
+        public const string BaseUrl = "https://localhost:44314"; 
 		// Tip: When you use Ngrok.exe remember to shutdown eScaler  
 	}
 }
