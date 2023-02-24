@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29001.49
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.Domain.Shared", "src\CSP.Book.Domain.Shared\CSP.Book.Domain.Shared.csproj", "{D64C1577-4929-4B60-939E-96DE1534891A}"
 EndProject
@@ -43,7 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.AuthServer", "host
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.Host.Shared", "host\CSP.Book.Host.Shared\CSP.Book.Host.Shared.csproj", "{F6AC8D4A-EDD7-4514-8E8A-5BCB019864DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSP.Book.Installer", "src\CSP.Book.Installer\CSP.Book.Installer.csproj", "{BE39FD00-745B-4049-8161-FC129817CBE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.Installer", "src\CSP.Book.Installer\CSP.Book.Installer.csproj", "{BE39FD00-745B-4049-8161-FC129817CBE4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.Blazor.Server", "src\CSP.Book.Blazor.Server\CSP.Book.Blazor.Server.csproj", "{CB03834F-84CC-45F5-B043-3509BA98D9E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSP.Book.Blazor", "src\CSP.Book.Blazor\CSP.Book.Blazor.csproj", "{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +127,14 @@ Global
 		{BE39FD00-745B-4049-8161-FC129817CBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE39FD00-745B-4049-8161-FC129817CBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE39FD00-745B-4049-8161-FC129817CBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB03834F-84CC-45F5-B043-3509BA98D9E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB03834F-84CC-45F5-B043-3509BA98D9E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB03834F-84CC-45F5-B043-3509BA98D9E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB03834F-84CC-45F5-B043-3509BA98D9E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +158,8 @@ Global
 		{690203F4-3CD5-4569-88D9-EE831EEA5F5F} = {E400416D-2895-4512-9D17-90681EEC7E0A}
 		{F6AC8D4A-EDD7-4514-8E8A-5BCB019864DB} = {E400416D-2895-4512-9D17-90681EEC7E0A}
 		{BE39FD00-745B-4049-8161-FC129817CBE4} = {649A3FFA-182F-4E56-9717-E6A9A2BEC545}
+		{CB03834F-84CC-45F5-B043-3509BA98D9E2} = {649A3FFA-182F-4E56-9717-E6A9A2BEC545}
+		{45AA6FF2-3EF3-4B22-A765-15D6250DC6E4} = {649A3FFA-182F-4E56-9717-E6A9A2BEC545}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4324B3B4-B60B-4E3C-91D8-59576B4E26DD}

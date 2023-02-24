@@ -25,6 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\modules\BookModule\src\CSP.Book.Blazor\CSP.Book.Blazor.csproj" />
+  
     <ProjectReference Include="..\CSP.Application\CSP.Application.csproj" />
     <ProjectReference Include="..\CSP.HttpApi\CSP.HttpApi.csproj" />
     <ProjectReference Include="..\CSP.EntityFrameworkCore\CSP.EntityFrameworkCore.csproj" />

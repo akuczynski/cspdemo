@@ -5,7 +5,7 @@ using Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations;
 using static System.Net.Mime.MediaTypeNames;
 
 // users: admin@abp.io, test@abp.io 
-const string email = "test@abp.io"; 		
+const string email = "test@abp.io"; // admin@abp.io"; 		
 const string password = "1q2w3E*";
 const string server = "https://localhost:44314/";
 const string serverApi = "https://localhost:44314/api/abp/application-configuration";
@@ -13,7 +13,7 @@ const string serverApi = "https://localhost:44314/api/abp/application-configurat
 const string api = "https://localhost:44314/api/book/quote";
 const string api2 = "https://localhost:44314/api/book/author";
 
-const string clientId = "CSP_APP";
+const string clientId = "CSP_App";
 //const string clientSecret = "1q2w3e*";
 
 var client = new HttpClient();

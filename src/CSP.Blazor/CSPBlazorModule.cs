@@ -40,6 +40,7 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using CSP.Book.Blazor;
 
 namespace CSP.Blazor;
 
@@ -55,7 +56,8 @@ namespace CSP.Blazor;
     typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
     typeof(AbpIdentityBlazorServerModule),
     typeof(AbpTenantManagementBlazorServerModule),
-    typeof(AbpSettingManagementBlazorServerModule)
+    typeof(AbpSettingManagementBlazorServerModule),
+    typeof(BookBlazorModule)
    )]
 public class CSPBlazorModule : AbpModule
 {
@@ -69,8 +71,9 @@ public class CSPBlazorModule : AbpModule
                 typeof(CSPDomainSharedModule).Assembly,
                 typeof(CSPApplicationModule).Assembly,
                 typeof(CSPApplicationContractsModule).Assembly,
-                typeof(CSPBlazorModule).Assembly
-            );
+                typeof(CSPBlazorModule).Assembly,
+                typeof(BookBlazorModule).Assembly
+			);
         });
 
         PreConfigure<OpenIddictBuilder>(builder =>
